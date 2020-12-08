@@ -47,38 +47,6 @@ body {
 #sign-buttons-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 30vh;
+    width: 30vmin;
     gap: 2px;
-}
-
-input ,select{
-    background-color: wheat;
-    border: transparent;
-    border-bottom: black 2px solid;
-    width: 30vh;
-    height: 5vh;
-    border-radius: 2px;
-    padding: 5px;
-    -moz-box-sizing: content-box; 
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-}
-
-input {
-    color: black;
-}
-input::placeholder {
-    color: rgb(117, 117, 117);
-}
-
-button {
-    background-color: cadetblue;
-    box-shadow: 1px 1px 1px black;
-    border-radius: 2px;
-    border: transparent;
-    height: 4vh;
-    color: white;
-}
-button:active{
-    background-color: rgb(67, 111, 112);
 }
