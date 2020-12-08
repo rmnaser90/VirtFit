@@ -75,8 +75,19 @@ router.put('/userTrainer/:userID/:trainerID',async function (req,res) {
     const {userID,tranerID} = req.params
     const user = await User.findById(userID)
     const trainer = await Trainer.findById(tranerID)
+
+    // to be completed
 })
+//Todo: create nutrition routes - farees
 
 
+
+
+
+
+
+
+
+//
 
 module.exports = router
