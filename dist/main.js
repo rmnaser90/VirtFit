@@ -1,5 +1,7 @@
-// const virtFitApp = new VirtFitApp
+const virtFitApp = new VirtFitAPP
 const renderer = new Renderer
+
+
 
 if (isLoggedIn()) {
     renderer.renderSignIn()
@@ -10,23 +12,32 @@ if (isLoggedIn()) {
     $('#sign-in-sign-up').on('click', '#go-to-sign-in', function () {
         renderer.renderSignIn()
     })
-    $('#sign-in-sign-up').on('click', '#sign-in', function () {
-        console.log("TBD sign in")
-        const email = $('#email').val()
-        const password = $('#password').val()
+    $('#sign-in-sign-up').on('click', '#sign-in',async function () {
+        const emailPass = {
+            email : $('#email').val(),
+            password : $('#password').val()
+        }
+        const user = await virtFitApp.signInUser(emailPass)
+        localStorage.id = user._id
+        location.assign(`./user/user.html`)
     })
-    $('#sign-in-sign-up').on('click', '#sign-up', function () {
-        console.log("TBD submit sign up")
-        const firstName = $('#firstName').val()
-        const lastName = $('#lastName').val()
-        const email = $('#email').val()
-        const phoneNumber = $('#phoneNumber').val()
-        const gender = $('#gender').val()
-        const birthDate = $('#birthDate').val()
-        const height = $('#height').val()
-        const weight = $('#weight').val()
-        const password = $('#password').val()
-        VirtFitAPP.signUp()
+
+    $('#sign-in-sign-up').on('click', '#sign-up',async function () {
+        const user = {
+            firstName : $('#firstName').val(),
+            lastName : $('#lastName').val(),
+            email : $('#email').val(),
+            phoneNumber : $('#phoneNumber').val(),
+            gender : $('#gender').val(),
+            birthdate :new Date($('#birthDate').val()) ,
+            height : $('#height').val(),
+            weight : $('#weight').val(),
+            password : $('#password').val()
+        }
+        const newUser = await virtFitApp.creatNewUser(user)
+        
+        localStorage.id = newUser._id
+        location.assign(`./user/user.html`)
     })
     
 }
