@@ -64,8 +64,11 @@ input ,select{
     box-sizing: content-box;
 }
 
-input::placeholder, input {
+input {
     color: black;
+}
+input::placeholder {
+    color: rgb(117, 117, 117);
 }
 
 button {
