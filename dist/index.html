@@ -20,7 +20,7 @@
         </div>
 
         <div id="sign-in-sign-up">
-            
+            <div id="err"></div>
         </div>
     </div>
 
@@ -43,12 +43,11 @@
             <input id="firstName" placeholder="First name">
             <input id="lastName" placeholder="Last name">
             <input id="email" type="email" placeholder="Example@gmail.com">
-            <input id="phoneNumber" type="number" placeholder="Phone number">
+            <input id="phoneNumber" type="text" placeholder="Phone number">
             <select name="gender" id="gender">
                 <option disabled selected >Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
               </select>
             <input id="birthDate" type="text" placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text')"> 
             <input id="height" type="number" placeholder="Height(CM)">
