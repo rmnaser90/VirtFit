@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="user.css">
+    <title>User</title>
+</head>
+<body>
+
+
+    <div id="navigation-bar">
+        <div>logo</div>
+        <div id="bar-items">
+            <div id="logout" class="bar-items">Logout</div>
+            <div id="user-name" class="bar-items">Name</div>
+        </div>
+    </div>
+    <div id="content-container">
+
+    </div>
+
+
+
+    <script id="status-template" type="text/x-handlebars-template">
+        <div class="status-container">
+            <h4>Hello {{firstName}}</h4>
+            <div>Remember your ideal weight is: <h6>{{idealWeight}}KG</h6></div>
+            <div>Current weight is: {{weight}}</div>
+            <div>bmrValue: {{bmrValue}}</div>
+            <div>Status: {{status}}</div>
+            <div>Risk: {{risk}}</div>
+            <div>Training calories: {{trainingClories}}</div>
+            <div>{{timeStamp}}</div>
+        </div>
+    </script>
+
+    <!--recipes template TBD-->
+    <script id="recipes-template" type="text/x-handlebars-template">
+        
+    </script>
+
+
+
+    <script src="user-main.js"></script>
+</body>
+</html>
