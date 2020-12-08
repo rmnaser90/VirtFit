@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const moment = require('moment')
 const Schema = mongoose.Schema
 const StatusModule = require('./Status')
-const Status =  StatusModule.Status
 const StatusSchema = StatusModule.StatusSchema
 const UserSchema = new Schema({
     firstName:	String,
@@ -22,4 +21,4 @@ const UserSchema = new Schema({
 
 const User = mongoose.model('user',UserSchema)
 
-module.exports = User
+module.exports = {User,UserSchema}
