@@ -5,6 +5,7 @@ const router = express.Router()
 const moment = require('moment')
 const User = require('../models/User').User
 const Status = require('../models/Status').Status
+const Trainer = require('../models/Trainer').Trainer
 
 
 router.post('/user', async function (req, res) {
@@ -61,12 +62,8 @@ router.post('/trainer', async function (req, res) {
     const userReq = req.body
     const trainer = new Trainer(userReq)
     
-    const age =  new Date().getFullYear() - user.birthdate.getFullYear()
-    const result = await healthApi.getUserStatus(user.weight, user.height, user.gender, age)
-    const status = new Status(result)
-    user.status.push(status)
-     user.save().then(function (result) {
-        res.send(user)
+     trainer.save().then(function (result) {
+        res.send(result)
      }).catch(function (err) {
          res.send({error: "used email"})
      })
@@ -74,5 +71,23 @@ router.post('/trainer', async function (req, res) {
 })
 
 
+router.put('/userTrainer/:userID/:trainerID',async function (req,res) {
+    const {userID,tranerID} = req.params
+    const user = await User.findById(userID)
+    const trainer = await Trainer.findById(tranerID)
+
+    // to be completed
+})
+//Todo: create nutrition routes - farees
+
+
+
+
+
+
+
+
+
+// end of fares job
 
 module.exports = router
