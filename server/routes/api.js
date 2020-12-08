@@ -11,7 +11,7 @@ const Trainer = require('../models/Trainer').Trainer
 router.post('/user', async function (req, res) {
     const userReq = req.body
     const user = new User(userReq)
-    
+    console.log(user)
     const age =  new Date().getFullYear() - user.birthdate.getFullYear()
     const result = await healthApi.getUserStatus(user.weight, user.height, user.gender, age)
     const status = new Status(result)
@@ -85,6 +85,18 @@ router.put('/userTrainer/:userID/:trainerID',async function (req,res) {
 
 
 
+
+router.get('/recipes/:recipeTime', async function(req, res){
+    const { recipeTime } = req.params
+    const recipesArr = await healthApi.getRecipe(recipeTime)
+    res.send(recipesArr)
+})
+
+router.get('/nutrition/:recipeId', async function(req, res){
+    const { recipeId } = req.params
+    const nutrients = await healthApi.getRecipeNutrition(recipeId)
+    res.send(nutrients)
+})
 
 
 

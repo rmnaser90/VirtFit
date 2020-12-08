@@ -18,7 +18,18 @@ class ApiManager{
     async updateUserStatus(userId, userWeight){
         const updatedUser = await $.put(`/user?userId=${userId}&weight=${userWeight}`)
         return (updatedUser)
-    } 
+    }
+    
+    async getRecipes(recipeTime){
+        const recipesArr = await $.get(`/recipes/${recipeTime}`)
+        return (recipesArr)
+    }
+    
+    async getRecipeNutrition(recipeId){
+        const nutrients = await $.get(`/nutrition/${recipeId}`)
+        return (nutrients)
+    }
+    
 }
 
 

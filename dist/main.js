@@ -2,7 +2,6 @@ const virtFitApp = new VirtFitAPP
 const renderer = new Renderer
 
 
-
 if (isLoggedIn()) {
     renderer.renderSignIn()
 
@@ -43,7 +42,6 @@ if (isLoggedIn()) {
 }
 
 
-
 function isLoggedIn() {
     const id = localStorage.id
     if (id) {
@@ -52,3 +50,4 @@ function isLoggedIn() {
     }
     return true
 }
+
