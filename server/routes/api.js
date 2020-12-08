@@ -4,14 +4,23 @@ const healthApi = new HealthApi
 const router = express.Router()
 const moment = require('moment')
 const User = require('../models/User')
-const Status = require('../models/Status')
+const Status = require('../models/Status').Status
 
 
 router.post('/user', async function (req, res) {
-    const user = req.body
-    user = new User(user)
-    await user.save()
-    res.send(user)
+    const userReq = req.body
+    const user = new User(userReq)
+    
+    const age =  new Date().getFullYear() - user.birthdate.getFullYear()
+    const result = await healthApi.getUserStatus(user.weight, user.height, user.gender, age)
+    const status = new Status(result)
+    user.status.push(status)
+     user.save().then(function (result) {
+        res.send(user)
+     }).catch(function (err) {
+         res.send({error: "used email"})
+     })
+    
 })
 
 router.post('/signIn', async function (req, res) {
@@ -31,7 +40,7 @@ router.post('/signIn', async function (req, res) {
 router.get('user/:userID', async function (req, res) {
     const { userID } = req.params
     const user = await User.findById(userID)
-    return user
+    res.send(user)
 })
 
 router.put('/user/:userId/:weight', async function (req, res) {
@@ -43,7 +52,9 @@ router.put('/user/:userId/:weight', async function (req, res) {
     const status = new Status(result)
     status.trainingCalories = 400
     console.log(status);
-    res.send(status)
+    user.status.push(status)
+    await user.save()
+    res.send(user)
 })
 
 

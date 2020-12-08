@@ -15,4 +15,4 @@ const Status = mongoose.model('status',StatusSchema)
 
 
 
-module.exports = Status
+module.exports = {Status, StatusSchema}

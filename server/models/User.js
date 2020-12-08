@@ -1,17 +1,20 @@
 const mongoose = require('mongoose')
 const moment = require('moment')
 const Schema = mongoose.Schema
-const Status = require('./Status')
+const StatusModule = require('./Status')
+const Status =  StatusModule.Status
+const StatusSchema = StatusModule.StatusSchema
 const UserSchema = new Schema({
     firstName:	String,
     lastName:	String,
-    email:	String,
+    email:	{type: String, unique:true},
     password:	String,
     phoneNo:	String,
     gender:	String,
     birthdate:	Date,
     height:	Number,
-    weight: Number
+    weight: Number,
+    status: [StatusSchema]
     
 })
 
