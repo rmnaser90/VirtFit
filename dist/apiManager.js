@@ -11,7 +11,7 @@ class ApiManager{
     } 
     
     async getUserFromDB(userId){
-        const userData = await $.get(`user/${userId}`)
+        const userData = await $.get(`/user/${userId}`)
         return (userData)
     }
 

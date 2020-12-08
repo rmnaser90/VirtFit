@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../elements.css">
     <link rel="stylesheet" href="user.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@800&display=swap"
+        rel="stylesheet">
     <title>User</title>
 </head>
 <body>
@@ -16,7 +20,20 @@
             <div id="user-name" class="bar-items">Name</div>
         </div>
     </div>
-    <div id="content-container">
+    <div id="container">
+        <div id="content-container">
+            
+        </div>
+        <div id="update-status">
+            <div id="weight-elements-container">
+                <div><input type="number" id="weight" placeholder="Weight(KG)"></div>
+                <button id="update">Update weight</button>
+            </div>
+            <button id="plan">Make plan</button>
+        </div>
+    </div>
+    <button id="search-meal">Search meals</button>
+    <div id="options">
 
     </div>
 
@@ -25,14 +42,19 @@
     <script id="status-template" type="text/x-handlebars-template">
         <div class="status-container">
             <h4>Hello {{firstName}}</h4>
-            <div>Remember your ideal weight is: <h6>{{idealWeight}}KG</h6></div>
-            <div>Current weight is: {{weight}}</div>
-            <div>bmrValue: {{bmrValue}}</div>
-            <div>Status: {{status}}</div>
-            <div>Risk: {{risk}}</div>
-            <div>Training calories: {{trainingClories}}</div>
-            <div>{{timeStamp}}</div>
+            <div>Remember your ideal weight is: {{status.idealWeight}}</h6></div>
+            <div>Current weight is: {{status.weight}}</div>
+            <div>bmrValue: {{status.bmrValue}}</div>
+            <div>Status: {{status.status}}</div>
+            <div>Risk: {{status.risk}}</div>
+            <div>{{formatDate status.timeStamp}}</div>
         </div>
+    </script>
+
+    <script id="meal-options-template" type="text/x-handlebars-template">
+        <button id="breakfast" class="option">Breakfast</button>
+        <button id="dinner" class="option">Dinner</button>
+        <button id="lunch" class="option">Lunch</button>
     </script>
 
     <!--recipes template TBD-->
@@ -42,6 +64,9 @@
 
     <script src="../jquery/dist/jquery.js"></script>
     <script src="../handlebars/dist/handlebars.js"></script>
+    <script src="../moment/moment.js"></script>
+    <script src="../apiManager.js"></script>
+    <script src="../logic.js"></script>
     <script src="user-render.js"></script>
     <script src="user-main.js"></script>
 </body>

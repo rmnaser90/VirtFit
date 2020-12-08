@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 const moment = require('moment')
 const Schema = mongoose.Schema
 const StatusModule = require('./Status')
-const Status =  StatusModule.Status
+const { TrainerSchema } = require('./trainer')
 const StatusSchema = StatusModule.StatusSchema
+const Trainer = require('./Trainer').TrainerSchema
 const UserSchema = new Schema({
     firstName:	String,
     lastName:	String,
@@ -14,7 +15,8 @@ const UserSchema = new Schema({
     birthdate:	Date,
     height:	Number,
     weight: Number,
-    status: [StatusSchema]
+    status: [StatusSchema],
+    trainer: {type: Schema.Types.ObjectId, ref: 'Trainer'}
     
 })
 
@@ -22,4 +24,4 @@ const UserSchema = new Schema({
 
 const User = mongoose.model('user',UserSchema)
 
-module.exports = User
+module.exports = {User,UserSchema}

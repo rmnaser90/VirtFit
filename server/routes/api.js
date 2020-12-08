@@ -3,8 +3,9 @@ const HealthApi = require('./services')
 const healthApi = new HealthApi
 const router = express.Router()
 const moment = require('moment')
-const User = require('../models/User')
+const User = require('../models/User').User
 const Status = require('../models/Status').Status
+const Trainer = require('../models/Trainer').Trainer
 
 
 router.post('/user', async function (req, res) {
@@ -37,7 +38,7 @@ router.post('/signIn', async function (req, res) {
     }
 })
 
-router.get('user/:userID', async function (req, res) {
+router.get('/user/:userID', async function (req, res) {
     const { userID } = req.params
     const user = await User.findById(userID)
     res.send(user)
@@ -57,6 +58,33 @@ router.put('/user/:userId/:weight', async function (req, res) {
     res.send(user)
 })
 
+router.post('/trainer', async function (req, res) {
+    const userReq = req.body
+    const trainer = new Trainer(userReq)
+    
+     trainer.save().then(function (result) {
+        res.send(result)
+     }).catch(function (err) {
+         res.send({error: "used email"})
+     })
+    
+})
+
+
+router.put('/userTrainer/:userID/:trainerID',async function (req,res) {
+    const {userID,tranerID} = req.params
+    const user = await User.findById(userID)
+    const trainer = await Trainer.findById(tranerID)
+
+    // to be completed
+})
+//Todo: create nutrition routes - farees
+
+
+
+
+
+
 
 router.get('/recipes/:recipeTime', async function(req, res){
     const { recipeTime } = req.params
@@ -72,5 +100,6 @@ router.get('/nutrition/:recipeId', async function(req, res){
 
 
 
+// end of fares job
 
 module.exports = router
