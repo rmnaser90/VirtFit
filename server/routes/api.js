@@ -34,13 +34,17 @@ router.get('user/:userID', async function (req, res) {
     return user
 })
 
-// router.put('/user/:userId/:weight', async function (req, res) {
-//     const { userID, weight } = req.params
-//     const user = await User.findById(userID)
-//     const age = Date.now() - user.birthdate
-//     const status = await healthApi.getUserStatus(weight, user.height, user.sex, age)
-//     status = new Status(status)
-// })
+router.put('/user/:userId/:weight', async function (req, res) {
+    const { userId, weight } = req.params
+    const user = await User.findById(userId)
+    const age =  new Date().getFullYear() - user.birthdate.getFullYear()
+    
+    const result = await healthApi.getUserStatus(weight, user.height, user.gender, age)
+    const status = new Status(result)
+    status.trainingCalories = 400
+    console.log(status);
+    res.send(status)
+})
 
 
 

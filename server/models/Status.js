@@ -6,9 +6,9 @@ const StatusSchema = new Schema({
     bmrValue: Number,	
     status:	String,
     risk:	String,
-    idealWeight: Number,
+    idealWeight: String,
     timeStamp:	Date,
-    trainingClories: Number
+    trainingCalories: Number
 })
 
 const Status = mongoose.model('status',StatusSchema)

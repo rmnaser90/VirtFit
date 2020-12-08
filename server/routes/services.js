@@ -1,5 +1,3 @@
-const { query } = require('express')
-
 class HealthApi {
     constructor() {
         this.apiKey =process.env.API_KEY
@@ -49,22 +47,27 @@ class HealthApi {
             this.bmr.data.sex= sex
             this.bmr.data.age= age
 
+            console.log(this.bmr);
+
         const response =  await this.axios.request(this.bmr)  
         const relevantData = {
             weight:response.data.weight.kg,
             status:response.data.bmi.status,
             risk:response.data.bmi.risk,
             idealWeight:response.data.ideal_weight,
-            bmrValue:response.data.bmr.value
+            bmrValue:response.data.bmr.value,
+            timeStamp: Date.now()
+            
             
         }
-        return console.log(relevantData)
+        console.log(relevantData);
+        return relevantData
     } 
 
     async getRecipe(recipeTime){
         this.recipes.url =`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?type=${recipeTime}`
         const recipesArr = await  this.axios.request(this.recipes)
-        return console.log(recipesArr.data.results)
+        return recipesArr.data.results
         // returns array of 10 recipes :
         // {
         //     id: 667917,
@@ -90,7 +93,7 @@ class HealthApi {
             likes: nutritionData.data.aggregateLikes,//number
             nutrition: nutritionData.data.nutrition.nutrients//array //{ title: 'Vitamin A',amount: 90.6,unit: 'IU',percentOfDailyNeeds: 1.81}    
         }
-        return console.log(relevantNutrition)
+        return relevantNutrition
     }
 
 
