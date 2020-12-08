@@ -10,6 +10,13 @@ if (isLoggedIn()) {
     $('#sign-in-sign-up').on('click', '#go-to-sign-in', function () {
         renderer.renderSignIn()
     })
+    $('#sign-in-sign-up').on('click', '#sign-in', function () {
+        console.log("TBD sign in")
+    })
+    $('#sign-in-sign-up').on('click', '#sign-up', function () {
+        console.log("TBD submit sign up")
+    })
+    
 }
 
 

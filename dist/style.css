@@ -57,7 +57,11 @@ input ,select{
     border-bottom: black 2px solid;
     width: 30vh;
     height: 5vh;
+    border-radius: 2px;
     padding: 5px;
+    -moz-box-sizing: content-box; 
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 input::placeholder, input {
@@ -67,6 +71,7 @@ input::placeholder, input {
 button {
     background-color: cadetblue;
     box-shadow: 1px 1px 1px black;
+    border-radius: 2px;
     border: transparent;
     height: 4vh;
     color: white;
