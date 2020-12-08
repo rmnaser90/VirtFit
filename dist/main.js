@@ -26,6 +26,7 @@ if (isLoggedIn()) {
         const height = $('#height').val()
         const weight = $('#weight').val()
         const password = $('#password').val()
+        VirtFitAPP.signUp()
     })
     
 }

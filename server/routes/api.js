@@ -3,7 +3,7 @@ const HealthApi = require('./services')
 const healthApi = new HealthApi
 const router = express.Router()
 const moment = require('moment')
-const User = require('../models/User')
+const User = require('../models/User').User
 const Status = require('../models/Status').Status
 
 
@@ -57,7 +57,21 @@ router.put('/user/:userId/:weight', async function (req, res) {
     res.send(user)
 })
 
-
+router.post('/trainer', async function (req, res) {
+    const userReq = req.body
+    const trainer = new Trainer(userReq)
+    
+    const age =  new Date().getFullYear() - user.birthdate.getFullYear()
+    const result = await healthApi.getUserStatus(user.weight, user.height, user.gender, age)
+    const status = new Status(result)
+    user.status.push(status)
+     user.save().then(function (result) {
+        res.send(user)
+     }).catch(function (err) {
+         res.send({error: "used email"})
+     })
+    
+})
 
 
 
