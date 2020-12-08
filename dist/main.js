@@ -17,7 +17,7 @@ if (isLoggedIn()) {
 function isLoggedIn() {
     const id = localStorage.id
     if (id) {
-        location.replace(`./user/user.html`)
+        location.assign(`./user/user.html`)
         return false
     }
     return true
