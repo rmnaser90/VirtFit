@@ -38,7 +38,7 @@ router.post('/signIn', async function (req, res) {
     }
 })
 
-router.get('user/:userID', async function (req, res) {
+router.get('/user/:userID', async function (req, res) {
     const { userID } = req.params
     const user = await User.findById(userID)
     res.send(user)
