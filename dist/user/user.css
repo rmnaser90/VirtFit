@@ -1,0 +1,44 @@
+/* <div id="navigation-bar">
+<div>insert logo here</div>
+<div id="bar-items">
+    <div id="logout">Logout</div>
+    <div id="user-name">Name</div>
+</div>
+</div> */
+body{
+    margin: 0;
+}
+
+#navigation-bar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 5vh;
+    align-items: center;
+    /* border-right: black 1px solid; */
+    /* border-left: black 1px solid; */
+    /* border-top: black 1px solid; */
+    background-color: cadetblue;
+
+    /* padding: 10px; */
+    /* justify-items: center; */
+}
+#navigation-bar:first-child{
+    border-bottom: black 1px solid;
+}
+#bar-items{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.bar-items{
+    border-left: black 1px solid;
+    border-bottom: black 1px solid;
+    height: 5vh;
+    cursor: pointer;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.bar-items:hover{
+    border-bottom: transparent 1px solid;
+    background-color: rgb(128, 206, 209);
+}

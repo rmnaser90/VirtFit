@@ -4,7 +4,10 @@ const app = express()
 const path = require('path')
 const api = require('./server/routes/api')
 const mongoose = require('mongoose')
+
+mongoose.set("useUnifiedTopology", true )
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useFindAndModify: true })
+
 const router = require('./server/routes/api')
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))

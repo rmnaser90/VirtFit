@@ -1,0 +1,2 @@
+
+const renderer = new Renderer

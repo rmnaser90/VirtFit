@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobileStyle.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@800&display=swap"
         rel="stylesheet">
@@ -16,15 +14,53 @@
 
 <body>
 
+    <div id="sign-container">
+        <div id="logo-healthquotes">
+
+        </div>
+
+        <div id="sign-in-sign-up">
+            
+        </div>
+    </div>
 
 
-<h1>index</h1>
 
 
+    <script id="sign-in-template" type="text/x-handlebars-template">
+        <div id="sign-inputs-buttons-container">
+            <input id="email" placeholder="Example@gmale.com">
+            <input id="password" type="password" placeholder="Password">
+            <div id="sign-buttons-container">
+                <button id="go-to-sign-up">Register</button>
+                <button id="sign-in">Login</button>
+            </div>
+        </div>
+    </script>
 
+    <script id="sign-up-template" type="text/x-handlebars-template">
+        <div id="sign-inputs-buttons-container">
+            <input id="firstName" placeholder="First name">
+            <input id="lastName" placeholder="Last name">
+            <input id="email" type="email" placeholder="Example@gmail.com">
+            <input id="phoneNumber" placeholder="Phone number">
+            <select name="gender" id="gender">
+                <option disabled selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            <input id="birthDate" type="date" placeholder="Date">
+            <input id="height" type="number" placeholder="Height in cm">
+            <input id="password" type="password" placeholder="Password">
+            <div id="sign-buttons-container">
+                <button id="go-to-sign-in">Return</button>
+                <button id="sign-up">Submit</button>
+            </div>
+        </div>
+    </script>
 
-
-
+    <script src="./@fortawesome/fontawesome-free/js/all.js"></script>
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="apiManager.js"></script>
