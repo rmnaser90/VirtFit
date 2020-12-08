@@ -43,15 +43,16 @@
             <input id="firstName" placeholder="First name">
             <input id="lastName" placeholder="Last name">
             <input id="email" type="email" placeholder="Example@gmail.com">
-            <input id="phoneNumber" placeholder="Phone number">
+            <input id="phoneNumber" type="number" placeholder="Phone number">
             <select name="gender" id="gender">
-                <option disabled selected>Gender</option>
+                <option disabled selected >Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
-            <input id="birthDate" type="date" placeholder="Date">
-            <input id="height" type="number" placeholder="Height in cm">
+            <input id="birthDate" type="text" placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text')"> 
+            <input id="height" type="number" placeholder="Height(CM)">
+            <input id="weight" type="number" placeholder="weight(KG)">
             <input id="password" type="password" placeholder="Password">
             <div id="sign-buttons-container">
                 <button id="go-to-sign-in">Return</button>
