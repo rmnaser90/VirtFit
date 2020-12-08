@@ -64,7 +64,7 @@ router.get('/recipes/:recipeTime', async function(req, res){
     res.send(recipesArr)
 })
 
-router.get('/nutrition/recipeId', async function(req, res){
+router.get('/nutrition/:recipeId', async function(req, res){
     const { recipeId } = req.params
     const nutrients = await healthApi.getRecipeNutrition(recipeId)
     res.send(nutrients)

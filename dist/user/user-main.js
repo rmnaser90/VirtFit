@@ -5,3 +5,4 @@ $('#logout').on('click',function(){
     localStorage.removeItem("id")
     location.assign(`../index.html`)
 })
+
