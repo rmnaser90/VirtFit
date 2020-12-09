@@ -6,6 +6,12 @@ class Renderer {
         const mealOptionsSource = $('#meal-options-template').html();
         this.mealOptionsTemplate = Handlebars.compile(mealOptionsSource); 
         
+        const recipesSource = $('#recipes-template').html();
+        this.recipesTemplate = Handlebars.compile(recipesSource); 
+        
+        const nutritionSource = $('#nutrition-template').html();
+        this.nutritionTemplate = Handlebars.compile(nutritionSource); 
+        
         Handlebars.registerHelper('formatDate', dateString => moment(dateString).format('MMMM Do YYYY, h:mm:ss a'))
     }
 
@@ -16,5 +22,11 @@ class Renderer {
 
     renderStatus = data => this._handleBarAppender($('#content-container'),this.statusTemplate,data)
     renderMealOptions = data => this._handleBarAppender($('#options'),this.mealOptionsTemplate,{})
+
+    renderRecipes = recipesArr =>{
+        let arrToObj={recipe: recipesArr}
+        this._handleBarAppender($('#recipes'), this.recipesTemplate, arrToObj)
+    } 
+    renderNutrition = nutrition => this._handleBarAppender($('#showNutrition'),this.nutritionTemplate,nutrition)
 
 }

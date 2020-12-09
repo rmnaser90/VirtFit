@@ -37,6 +37,14 @@
 
     </div>
 
+    <div id="showNutrition">
+
+    </div>
+
+    <div id="recipes">
+
+    </div>
+
 
 
     <script id="status-template" type="text/x-handlebars-template">
@@ -57,8 +65,30 @@
         <button id="lunch" class="option">Lunch</button>
     </script>
 
-    <!--recipes template TBD-->
     <script id="recipes-template" type="text/x-handlebars-template">
+        {{#each recipe}}
+        <div id="{{id}}" class="recipe">
+            <p>{{title}}</p>
+            <img src="https://spoonacular.com/recipeImages/{{image}}" alt="{{sourceUrl}}">
+            <p>prepare time: {{readyInMinutes}}</p>
+            <p>servings: {{servings}}</p>
+            <button class="nutrition">See recipe nutrition</button>
+        </div>
+        {{/each}} 
+    </script>
+
+    <script id="nutrition-template" type="text/x-handlebars-template">
+        
+        <div id="{{id}}" class="nutrition">
+            <p>{{name}}</p>
+            <p>healthScore: {{healthScore}}</p>
+            <p>likes: {{likes}}</p>
+            <ul>
+                {{#each nutrition}}
+                    <li>{{title}}: {{amount}} {{unit}}, {{percentOfDailyNeeds}}</li>
+                {{/each}}
+            </ul>
+        </div>
         
     </script>
 
