@@ -30,6 +30,15 @@ class ApiManager{
         return (nutrients)
     }
     
+    async getTrainerUser(trainerID){
+        const trainer = await $.get(`/trainer/${trainerID}`)
+        return trainer
+    }
+    async assignTrainer(userID,trainerID){
+        const response = await $.put(`/userTrainer/${userID}/${trainerID}`)
+        return response
+    }
+
 }
 
 
