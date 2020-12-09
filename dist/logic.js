@@ -42,6 +42,7 @@ class VirtFitAPP{
         this.recipeNutrition = nutrients
         return this.recipeNutrition
     }
+   
 }
 
 

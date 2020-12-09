@@ -84,8 +84,17 @@ router.put('/userTrainer/:userID/:trainerID', async function (req, res) {
 router.get('/trainer/:trainerID', async function (req, res) {
     const { trainerID } = req.params
     const trainer = await Trainer.findById(trainerID).populate("trainees").exec()
-    trainer.trainees.forEach(t => t.password='')
+    trainer.trainees.forEach(t => t.password = '')
     res.send(trainer)
+})
+
+router.post('/weekPlan/:userID', async function (req, res) {
+    const { userID } = req.params
+    const weeklyPlan = req.body
+    const user = await User.findById(userID)
+    user.weeklyPlan = weeklyPlan
+    user.save()
+    res.send(user)
 })
 
 
@@ -103,6 +112,7 @@ router.get('/nutrition/:recipeId', async function (req, res) {
     const nutrients = await healthApi.getRecipeNutrition(recipeId)
     res.send(nutrients)
 })
+
 
 
 
