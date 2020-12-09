@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const UserSchema = require('./User').UserSchema
-
+const User = require('./User').User
 const TrainerSchema = new Schema({
     firstName:	String,
     lastName:	String,
@@ -13,11 +12,11 @@ const TrainerSchema = new Schema({
     phoneNo:	String,
     gender:	String,
     birthdate:	Date,
-    trainees: [{type: Schema.Types.ObjectId, ref: 'User'}]
+    trainees: [{type: Schema.Types.ObjectId, ref: 'user'}]
     
 })
 
 const Trainer = mongoose.model('trainer',TrainerSchema)
 
 
-module.exports = {Trainer,TrainerSchema}
+module.exports = Trainer
