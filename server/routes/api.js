@@ -67,6 +67,19 @@ router.post('/trainer', async function (req, res) {
         res.send({ error: "used email" })
     })
 })
+router.post('/trainerSignIn', async function (req, res) {
+    const { email, password } = req.body
+    const trainer = await Trainer.findOne({ email: email })
+    if (trainer) {
+        if (trainer.password == password) {
+            res.send(trainer)
+        } else {
+            res.send({ error: "wrong password" })
+        }
+    } else {
+        res.send({ error: "email doesn't exist" })
+    }
+})
 
 router.put('/userTrainer/:userID/:trainerID', async function (req, res) {
     const { userID, trainerID } = req.params

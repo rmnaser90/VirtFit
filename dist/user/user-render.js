@@ -20,13 +20,13 @@ class Renderer {
         elementToAppendTo.empty().append(newHTML);
     }
 
+    showElement = element => element.css("visibility", "visible")
+    hideElement = element => element.css("visibility", "hidden")
+
     renderStatus = data => this._handleBarAppender($('#content-container'),this.statusTemplate,data)
     renderMealOptions = data => this._handleBarAppender($('#options'),this.mealOptionsTemplate,{})
 
-    renderRecipes = recipesArr =>{
-        let arrToObj={recipe: recipesArr}
-        this._handleBarAppender($('#recipes'), this.recipesTemplate, arrToObj)
-    } 
-    renderNutrition = nutrition => this._handleBarAppender($('#showNutrition'),this.nutritionTemplate,nutrition)
+    renderRecipes = recipesArr => this._handleBarAppender($('#recipes'), this.recipesTemplate, {recipe: recipesArr})
+    renderNutrition = (nutritionContainer,nutrition) => this._handleBarAppender(nutritionContainer,this.nutritionTemplate,nutrition)
 
 }
