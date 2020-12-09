@@ -16,7 +16,9 @@ class ApiManager{
     }
 
     async updateUserStatus(userId, userWeight){
-        const updatedUser = await $.put(`/user?userId=${userId}&weight=${userWeight}`)
+        console.log(userId, userWeight)
+        //  = await $.put(`/user/${userId}/${userWeight}`) //`/user?userId=${userId}&weight=${userWeight}`
+        const updatedUser = await $.ajax({url:`/user/${userId}/${userWeight}`,type: 'PUT'})
         return (updatedUser)
     }
     
