@@ -23,6 +23,7 @@ body {
     grid-template-columns: 1fr 1fr;
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 
 #logo-healthquotes {
@@ -49,4 +50,19 @@ body {
     grid-template-columns: 1fr 1fr;
     width: 30vmin;
     gap: 2px;
+}
+#err{
+    color: red;
+    height: 2vh;
+    font-size: 1.5vmin;
+}
+
+#type-of-user{
+    width: 8vmin;
+    height: 3vmin;
+    background-color: cadetblue;
+    border-bottom: transparent;
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
