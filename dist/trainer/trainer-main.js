@@ -1,33 +1,58 @@
-const renderer = new Renderer
-const virtFitApp = new VirtFitAPP()
+// const trainerRenderer = new TrainerRenderer
+const trainerLogic = new TrainerLogic()
 
 let id
 let user
 
 const formatStatusForRender = (user) => { return {firstName: user.firstName, status: user.status[user.status.length-1]} }
 
-
 init()
-
-
 
 $('#logout').on('click',function(){
     localStorage.removeItem("id")
     location.assign(`../index.html`)
 })
 
+///////////////////////////
+async function init(){
+    id = localStorage.id
+    trainer = await trainerLogic.getTrainerUsers(id)
+    
+    // trainerRenderer.renderTrainer(trainer)
+}
+/////////////////////
+
+
+$('#rightSide-container').on('click', '.makePlane',async function(){
+    const userId = $(this).closest('.user').attr('id')
+    const userPlan = trainerLogic.makePlane(userId) // return object 
+    // trainerRenderer.makeTable(userPlan) /// should template ('#table-template')
+})
+
 $('#search-meal').on('click',function(){
-    renderer.renderMealOptions()
+    // trainerRenderer.renderMealOptions()
 })
 $('#options').on('click','.option',function(){
     $('#options').empty()
+    const recipeTime = $(this).attr('id')
+    const recipesArr = await trainerLogic.getRecipes(recipeTime)
+    // trainerRenderer.renderRecipes(recipesArr) /// should display recipes on the leftSide bar
 })
 
-async function init(){
-    id = localStorage.id
-    user = await virtFitApp.getUserFromDB(id)
-    console.log(user)
+$('#leftSide-container').on('click', '#see-nutrition', async function(){
+    const recipeId = $(this).closest('.recipe').data('id')
+    const recipe = trainerLogic.getSearchedRecipe(recipeId)
+    const nutrient = await trainerLogic.getRecipeNutrition(recipeId)
+    // trainerRenderer.renderNutrition(recipe, nutrient) // in the render empty("#recipes") and display recipe and it's nutrition in this template, add a button with a class "addToPlan" for adding the recipe to the plan table 
+})
+
+$('#leftSide-container').on('click', '.add', async function(){
+    
+    // trainerRenderer.renderNutrition(recipe, nutrient) // in the render empty("#recipes") and display recipe and it's nutrition 
+})
 
 
-    renderer.renderStatus(formatStatusForRender(user))
-}
+
+
+
+
