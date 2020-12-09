@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,9 @@
         rel="stylesheet">
     <title>User</title>
 </head>
+
 <body>
-    
+
     <div id="navigation-bar">
         <div>logo</div>
         <div id="bar-items">
@@ -18,27 +20,27 @@
             <div id="user-name" class="bar-items">Name</div>
         </div>
     </div>
-    
-    
+
+
     <div id="container">
         <div id="trainers-container">
 
             <div id="leftSide-container">
                 <div id="search">
-                    <button id="search-meal">Search meals</button> 
+                    <button id="search-meal">Search meals</button>
                     <div id="options">
                     </div>
                 </div>
-            
+
                 <div id="recipes">
                 </div>
-            </div>  
+            </div>
 
             <div id="rightSide-container">
 
             </div>
         </div>
-        
+
         <!-- <div id="update-status">
             <div id="weight-elements-container">
                 <div><input type="number" id="weight" placeholder="Weight(KG)"></div>
@@ -46,7 +48,7 @@
             </div>
             <button id="plan">Make plan</button>
         </div> -->
-        
+
     </div>
 
 
@@ -66,7 +68,7 @@
 
 
     <script id="table-template" type="text/x-handlebars-template">
-        
+
         <div id="table-container">
             <div id="tableTopBar">
 
@@ -121,8 +123,9 @@
     <script src="../handlebars/dist/handlebars.js"></script>
     <script src="../moment/moment.js"></script>
     <script src="../apiManager.js"></script>
-    <script src="../logic.js"></script>
+    <script src="trainer-logic.js"></script>
     <script src="trainer-render.js"></script>
     <script src="trainer-main.js"></script>
 </body>
+
 </html>

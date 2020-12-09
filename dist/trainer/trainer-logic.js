@@ -1,4 +1,4 @@
-// const apiManager = new ApiManager
+const apiManager = new ApiManager
 class TrainerLogic{
  
     constructor(){
@@ -10,15 +10,10 @@ class TrainerLogic{
     
     async getTrainerUsers(trainerId){
         const trainer = await apiManager.getTrainerUser(trainerId)
-        const trainees = trainer.trainees 
-        return trainees
-    }
-
-    async getTrainerFromDB(trainerId){
-        const trainer = await apiManager.getTrainerUser(trainerId)
         this.trainer = trainer
         return this.trainer
     }
+
 
     addMeal(recipeId, day, meal){
         const recipe = this.recipes.find(r => r.id === recipeId)
