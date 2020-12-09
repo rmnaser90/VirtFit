@@ -4,7 +4,6 @@ const Schema = mongoose.Schema
 const StatusModule = require('./Status')
 const { TrainerSchema } = require('./trainer')
 const StatusSchema = StatusModule.StatusSchema
-const Trainer = require('./Trainer').TrainerSchema
 const UserSchema = new Schema({
     firstName:	String,
     lastName:	String,
