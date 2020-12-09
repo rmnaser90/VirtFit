@@ -12,7 +12,12 @@ class Renderer {
         const nutritionSource = $('#nutrition-template').html();
         this.nutritionTemplate = Handlebars.compile(nutritionSource); 
         
+        const trainerSource = $('#trainer-template').html();
+        this.trainerTemplate = Handlebars.compile(trainerSource); 
+
         Handlebars.registerHelper('formatDate', dateString => moment(dateString).format('MMMM Do YYYY, h:mm:ss a'))
+
+        Handlebars.registerHelper('genderCheck', gender => gender === "m" ? "Male" : "Female")
     }
 
     _handleBarAppender = (elementToAppendTo,Template,data) => {
@@ -26,7 +31,9 @@ class Renderer {
     renderStatus = data => this._handleBarAppender($('#content-container'),this.statusTemplate,data)
     renderMealOptions = data => this._handleBarAppender($('#options'),this.mealOptionsTemplate,{})
 
-    renderRecipes = recipesArr => this._handleBarAppender($('#recipes'), this.recipesTemplate, {recipe: recipesArr})
+    renderRecipes = recipesArr => this._handleBarAppender($('#recipes-trainers'), this.recipesTemplate, {recipe: recipesArr})
     renderNutrition = (nutritionContainer,nutrition) => this._handleBarAppender(nutritionContainer,this.nutritionTemplate,nutrition)
+    
+    renderTrainers = (trainers) => this._handleBarAppender($('#recipes-trainers'),this.trainerTemplate,trainers)
 
 }

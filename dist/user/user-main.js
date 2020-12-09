@@ -28,7 +28,7 @@ $('#options').on('click','.option',async function(){
     removeLoadGif()
 })
 // getRecipeNutrition()
-$('#recipes').on('click', '.recipes-container', async function(){
+$('#recipes-trainers').on('click', '.recipes-container', async function(){
     loadGif()
     const recipeContainer = $(this).closest('.recipe')
     const nutritionContainer = recipeContainer.find('.nutrition-container')
@@ -39,7 +39,7 @@ $('#recipes').on('click', '.recipes-container', async function(){
     renderer.hideElement($(this))
     removeLoadGif()
 })
-$('#recipes').on('click', '.nutrition-container', function(){
+$('#recipes-trainers').on('click', '.nutrition-container', function(){
     $(this).empty()
     const recipeContainer = $(this).closest('.recipe').find('.recipes-container')
     renderer.showElement(recipeContainer)
@@ -60,8 +60,11 @@ $('#update').on('click', async function(){
 })
 
 $('#find-trainer').on('click', async function(){
-    const trainersArr = 
-    renderer.renderTrainers(trainersArr)
+    loadGif()
+    const trainersArr = await virtFitApp.getTrainers()
+    console.log(trainersArr)
+    renderer.renderTrainers({trainers: trainersArr})
+    removeLoadGif()
 })
 
 function loadGif(){

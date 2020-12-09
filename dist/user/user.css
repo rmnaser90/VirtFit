@@ -84,7 +84,7 @@ button{
     height: 3vmin;
 }
 
-#recipes{
+#recipes-trainers{
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -133,4 +133,20 @@ button{
 }
 .nutrition>ul{
     height: 10vmin;
+}
+.trainer{
+    background-color: wheat;
+    display: grid;
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+}
+.trainer>button{
+    width: 3vw;
+    height: 2vh;
+}
+.trainer>iframe{
+    max-height: 15vh;
+    max-width: 30vh;
 }
