@@ -5,7 +5,7 @@ const router = express.Router()
 const moment = require('moment')
 const User = require('../models/User').User
 const Status = require('../models/Status').Status
-
+const Trainer = require('../models/Trainer')
 
 
 router.post('/user', async function (req, res) {

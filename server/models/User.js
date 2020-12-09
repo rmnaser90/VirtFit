@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const moment = require('moment')
 const Schema = mongoose.Schema
 const StatusModule = require('./Status')
-const { TrainerSchema } = require('./trainer')
 const StatusSchema = StatusModule.StatusSchema
 const UserSchema = new Schema({
     firstName:	String,
