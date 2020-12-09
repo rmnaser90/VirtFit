@@ -39,6 +39,16 @@ class ApiManager{
         return response
     }
 
+    async signInTrainer(email,password){
+        const trainer = await $.post(`/trainerSignIn/`,{email,password})
+        return trainer
+    }
+
+    async createNewTrainer(newTrainer){
+        const savedTrainer = await $.post(`/trainer`,newTrainer)
+        return savedTrainer
+    }
+
 }
 
 

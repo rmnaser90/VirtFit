@@ -43,6 +43,13 @@ class VirtFitAPP{
         return this.recipeNutrition
     }
    
+    async signInTrainer(email,password){
+        const trainer = await apiManager.signInTrainer(email,password)
+        return trainer
+    }
+
+    createNewTrainer = async newTrainer => await apiManager.createNewTrainer(newTrainer)
+
 }
 
 

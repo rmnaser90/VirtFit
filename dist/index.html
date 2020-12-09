@@ -16,12 +16,16 @@
 <body>
 
     <div id="sign-container">
+        <select id="type-of-user">
+            <option value="trainee">Trainee</option>
+            <option value="trainer">Trainer</option>
+        </select>
         <div id="logo-healthquotes">
 
         </div>
 
         <div id="sign-in-sign-up">
-            <div id="err"></div>
+            
         </div>
     </div>
 
@@ -36,6 +40,19 @@
                 <button id="go-to-sign-up">Register</button>
                 <button id="sign-in">Login</button>
             </div>
+            <div id="err"></div>
+        </div>
+    </script>
+
+    <script id="trainer-sign-in-template" type="text/x-handlebars-template">
+        <div id="sign-inputs-buttons-container">
+            <input id="email" type="email" placeholder="Example@gmale.com">
+            <input id="password" type="password" placeholder="Password">
+            <div id="sign-buttons-container">
+                <button id="go-to-trainer-sign-up">Register</button>
+                <button id="trainer-sign-in">Login</button>
+            </div>
+            <div id="err"></div>
         </div>
     </script>
 
@@ -47,17 +64,39 @@
             <input id="password" type="password" placeholder="Password">
             <input id="phoneNumber" type="text" placeholder="Phone number">
             <select name="gender" id="gender">
-                <option disabled selected >Gender</option>
                 <option value="m">Male</option>
                 <option value="f">Female</option>
               </select>
             <input id="birthDate" type="text" placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text')"> 
-            <input id="height" type="number" placeholder="Height(CM)">
-            <input id="weight" type="number" placeholder="weight(KG)">
+            <input id="height" type="number" min="0" placeholder="Height(CM)">
+            <input id="weight" type="number" min="0" placeholder="weight(KG)">
             <div id="sign-buttons-container">
                 <button id="go-to-sign-in">Return</button>
                 <button id="sign-up">Submit</button>
             </div>
+            <div id="err"></div>
+        </div>
+    </script>
+
+    <script id="trainer-sign-up-template" type="text/x-handlebars-template">
+        <div id="sign-inputs-buttons-container">
+            <input id="firstName" placeholder="First name">
+            <input id="lastName" placeholder="Last name">
+            <input id="email" type="email" placeholder="Example@gmail.com">
+            <input id="password" type="password" placeholder="Password">
+            <input id="bio" type="text" placeholder="bio.">
+            <input id="videoUrl" type="url" placeholder="Video url link">
+            <input id="phoneNumber" type="text" placeholder="Phone number">
+            <select name="gender" id="gender">
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+            </select>
+            <input id="birthDate" type="text" placeholder="Birthday" onfocus="(this.type='date')" onblur="(this.type='text')"> 
+            <div id="sign-buttons-container">
+                <button id="go-to-trainer-sign-in">Return</button>
+                <button id="trainer-sign-up">Submit</button>
+            </div>
+            <div id="err"></div>
         </div>
     </script>
 

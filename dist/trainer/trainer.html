@@ -23,33 +23,19 @@
 
 
     <div id="container">
-        <div id="trainers-container">
-
-            <div id="leftSide-container">
-                <div id="search">
-                    <button id="search-meal">Search meals</button>
-                    <div id="options">
-                    </div>
-                </div>
-
-                <div id="recipes">
-                </div>
-            </div>
-
-            <div id="rightSide-container">
-
-            </div>
+        <div id="trainees-container">
         </div>
 
-        <!-- <div id="update-status">
-            <div id="weight-elements-container">
-                <div><input type="number" id="weight" placeholder="Weight(KG)"></div>
-                <button id="update">Update weight</button>
-            </div>
-            <button id="plan">Make plan</button>
-        </div> -->
+    </div>
+    <script id="trainee-template" type="text/x-handlebars-template">
+    {{#each trainees}}
+    <div class="traineeBox">
+        <p class="traineeName">{{firstName}} {{lastName}}</p>
 
     </div>
+    {{/each}}
+</script>
+   
 
 
     <script id="trainer-template" type="text/x-handlebars-template">

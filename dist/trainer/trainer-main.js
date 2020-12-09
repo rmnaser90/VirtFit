@@ -1,8 +1,7 @@
-// const trainerRenderer = new TrainerRenderer
+const renderer = new Renderer
 const trainerLogic = new TrainerLogic()
 
 let id
-let user
 
 const formatStatusForRender = (user) => { return {firstName: user.firstName, status: user.status[user.status.length-1]} }
 
@@ -16,9 +15,8 @@ $('#logout').on('click',function(){
 ///////////////////////////
 async function init(){
     id = localStorage.id
-    trainer = await trainerLogic.getTrainerUsers(id)
-    
-    // trainerRenderer.renderTrainer(trainer)
+    const trainer = await trainerLogic.getTrainerUsers(id)
+    renderer.renderTainees(trainer)
 }
 /////////////////////
 
@@ -32,7 +30,7 @@ $('#rightSide-container').on('click', '.makePlane',async function(){
 $('#search-meal').on('click',function(){
     // trainerRenderer.renderMealOptions()
 })
-$('#options').on('click','.option',function(){
+$('#options').on('click','.option',async function(){
     $('#options').empty()
     const recipeTime = $(this).attr('id')
     const recipesArr = await trainerLogic.getRecipes(recipeTime)

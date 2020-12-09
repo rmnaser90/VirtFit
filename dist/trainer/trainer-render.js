@@ -1,20 +1,15 @@
 class Renderer {
     constructor() {
-        const statusSource = $('#status-template').html();
-        this.statusTemplate = Handlebars.compile(statusSource); 
-        
-        const mealOptionsSource = $('#meal-options-template').html();
-        this.mealOptionsTemplate = Handlebars.compile(mealOptionsSource); 
-        
-        Handlebars.registerHelper('formatDate', dateString => moment(dateString).format('MMMM Do YYYY, h:mm:ss a'))
+       
+        this.traineeSource = $('#trainee-template').html()
+        this.traineesContainer = $('#trainees-container')
+        this.trainerName = $('#user-name')
     }
-
-    _handleBarAppender = (elementToAppendTo,Template,data) => {
-        let newHTML = Template(data);
-        elementToAppendTo.empty().append(newHTML);
+    renderTainees(trainer){
+        this.trainerName.text(trainer.firstName)
+        const template = Handlebars.compile(this.traineeSource)
+        const html = template(trainer)
+        this.traineesContainer.append(html)
     }
-
-    renderStatus = data => this._handleBarAppender($('#content-container'),this.statusTemplate,data)
-    renderMealOptions = data => this._handleBarAppender($('#options'),this.mealOptionsTemplate,{})
-
+ 
 }
