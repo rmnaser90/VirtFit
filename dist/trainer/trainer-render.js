@@ -5,7 +5,7 @@ class Renderer {
         this.traineesContainer = $('#trainees-container')
         this.trainerName = $('#user-name')
 
-        this.userSource = $('#User-template')
+        this.userSource = $('#User-status-template').html()
         this.userStatusContainer = $('#user-status-container')
     }
     renderTainees(trainer){
@@ -16,8 +16,10 @@ class Renderer {
     }
 
     renderUserStatus(user){
+        const rendringUser = {...user}
+        rendringUser.status= rendringUser.status[rendringUser.status.length-1]
         const template = Handlebars.compile(this.userSource)
-        const html = template(user)
+        const html = template(rendringUser)
         this.userStatusContainer.append(html)
 
     }

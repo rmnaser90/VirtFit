@@ -93,7 +93,7 @@ if (isLoggedIn()) {
 function isLoggedIn() {
     const id = localStorage.id
     if (id) {
-        location.assign(`./user/user.html`)
+        assignPathByType()
         return false
     }
     return true
@@ -135,6 +135,13 @@ function renderByType(type) {
         renderer.renderSignIn()
     else
         renderer.renderTrainerSignIn()
+}
+
+function assignPathByType() {
+    if (localStorage.type === "trainer")
+        location.assign(`./trainer/trainer.html`)
+    else
+        location.assign(`./user/user.html`)
 }
 
 function init() {

@@ -25,29 +25,43 @@
     <div id="container">
         <div id="trainees-container">
         </div>
+        <div id="userInfo">
         <div id="user-status-container"></div>
+        <div id="userWeeklyPlan"></div>
+        </div>
+<div id="searchMealsContainer">
+    <div id="searchForMeal">
+        <h1>look for meals</h1>
+        <div class="mealButtons" id="breakfast">Breakfast</div>
+        <div class="mealButtons" id="lunch">Lunch</div>
+        <div class="mealButtons" id="dinner">Dinner</div>
+    </div>
+
+</div>
 
     </div>
+
+
+
     <script id="trainee-template" type="text/x-handlebars-template">
-    {{#each trainees}}
-    <div class="traineeBox" id="{{_id}}">
-        <p class="traineeName">{{firstName}} {{lastName}}</p>
+         {{#each trainees}}
+              <div class="traineeBox" id="{{_id}}">
+                   <p class="traineeName">{{firstName}} {{lastName}}</p>
 
-    </div>
+              </div>
     {{/each}}
-</script>
-   
+    </script>
 
 
-    <script id="User-template" type="text/x-handlebars-template">
+
+    <script id="User-status-template" type="text/x-handlebars-template">
         <div id="{{_id}}" class="userStatus">
             <h4>name: {{firstName}} {{lastName}}</h4>
-            <div>Ideal weight is: {{status.idealWeight}}</h6></div>
-            <div>Current weight is: {{status.weight}}</div>
-            <div>bmrValue: {{status.bmrValue}}</div>
-            <div>Status: {{status.status}}</div>
-            <div>Risk: {{status.risk}}</div>
-            <button class="makePlane">Add a plan</button>
+            <div class="statusText">Ideal weight is: {{status.idealWeight}}</div>
+            <div class="statusText">Current weight is: {{status.weight}}</div>
+            <div class="statusText">bmrValue: {{status.bmrValue}}</div>
+            <div class="statusText">Status: {{status.status}}</div>
+            <div class="statusText">Risk: {{status.risk}}</div>
         </div>
     </script>
 

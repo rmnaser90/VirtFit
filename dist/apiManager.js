@@ -49,6 +49,8 @@ class ApiManager{
         return savedTrainer
     }
 
+    getTrainers = async () => await $.get('/trainers')
+
 }
 
 
