@@ -36,10 +36,6 @@
 
     </div>
 
-    <div id="showNutrition">
-
-    </div>
-
     <div id="recipes">
 
     </div>
@@ -66,27 +62,31 @@
 
     <script id="recipes-template" type="text/x-handlebars-template">
         {{#each recipe}}
-        <div id="{{id}}" class="recipe">
-            <p>{{title}}</p>
-            <img src="https://spoonacular.com/recipeImages/{{image}}" alt="{{sourceUrl}}">
-            <p>prepare time: {{readyInMinutes}}</p>
-            <p>servings: {{servings}}</p>
-            <button class="nutrition">See recipe nutrition</button>
+        <div data-id="{{id}}" class="recipe">
+            <div class="nutrition-container">
+
+            </div>
+            <div class="recipes-container">
+                <p>{{title}}</p>
+                <img src="https://spoonacular.com/recipeImages/{{image}}" alt="{{sourceUrl}}">
+                <p>prepare time: {{readyInMinutes}}</p>
+                <p>servings: {{servings}}</p>
+            </div>
         </div>
         {{/each}} 
     </script>
 
     <script id="nutrition-template" type="text/x-handlebars-template">
         
-        <div id="{{id}}" class="nutrition">
+        <div data-id="{{id}}" class="nutrition">
             <p>{{name}}</p>
             <p>healthScore: {{healthScore}}</p>
             <p>likes: {{likes}}</p>
-            <ul>
+            <!-- <ul>
                 {{#each nutrition}}
                     <li>{{title}}: {{amount}} {{unit}}, {{percentOfDailyNeeds}}</li>
                 {{/each}}
-            </ul>
+            </ul> -->
         </div>
         
     </script>
