@@ -5,7 +5,7 @@ const router = express.Router()
 const moment = require('moment')
 const User = require('../models/User').User
 const Status = require('../models/Status').Status
-const Trainer = require('../models/Trainer').Trainer
+
 
 
 router.post('/user', async function (req, res) {
@@ -57,7 +57,6 @@ router.put('/user/:userId/:weight', async function (req, res) {
     await user.save()
     res.send(user)
 })
-
 router.post('/trainer', async function (req, res) {
     const userReq = req.body
     const trainer = new Trainer(userReq)
