@@ -84,33 +84,12 @@ router.put('/userTrainer/:userID/:trainerID', async function (req, res) {
 router.get('/trainer/:trainerID', async function (req, res) {
     const { trainerID } = req.params
     const trainer = await Trainer.findById(trainerID).populate("trainees").exec()
-
-    const trainees = trainer.trainees.map(t => {
-        return {
-            _id: t._id,
-            firstName: t.firstName,
-            lastName: t.lastName,
-            email: t.email,
-            phoneNo: t.phoneNo,
-            gender: t.gender,
-            birthdate: t.birthdate,
-            height: t.height,
-            weight: t.weight,
-            status: t.status,
-        }
-    })
-    trainer.trainees = []
-    res.send({trainer,trainees})
-
+    trainer.trainees.forEach(t => t.password='')
+    res.send(trainer)
 })
 
 
 //Todo: create nutrition routes - farees
-
-
-
-
-
 
 
 router.get('/recipes/:recipeTime', async function (req, res) {
