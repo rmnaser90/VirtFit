@@ -83,3 +83,54 @@ button{
     width: 15vmin;
     height: 3vmin;
 }
+
+#recipes{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 2vmin;
+}
+.recipes-container{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+.recipe{
+    box-shadow: 3px 5px 2px rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 3px 5px 2px rgb(100, 100, 100);
+    background-color: cadetblue;
+    width: 30vmin;
+    height: 40vmin;
+}
+.recipe:hover{
+    box-shadow: 3px 5px 2px rgb(197, 78, 78);
+}
+.recipe:active{
+    background-color: rgb(67, 111, 112);
+}
+
+.recipes-container>p{
+    font-size: 2vmin;
+    color: white;
+    border-bottom: black 1px solid;
+}
+img{
+    height: 15vmin;
+    width: 15vmin;
+    border-radius: 5px;
+    box-shadow: 3px 5px 2px rgb(100, 100, 100);
+}
+.nutrition{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 40vmin;
+}
+.nutrition>ul{
+    height: 10vmin;
+}
