@@ -67,7 +67,7 @@ router.post('/trainer', async function (req, res) {
         res.send({ error: "used email" })
     })
 })
-router.post('/signIntrainer', async function (req, res) {
+router.post('/trainerSignIn', async function (req, res) {
     const { email, password } = req.body
     const trainer = await Trainer.findOne({ email: email })
     if (trainer) {
