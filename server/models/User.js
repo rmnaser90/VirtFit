@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     height:	Number,
     weight: Number,
     status: [StatusSchema],
-    trainer: {type: Schema.Types.ObjectId, ref: 'Trainer'}
+    trainer: {type: Schema.Types.ObjectId, ref: 'trainer'}
     
 })
 

@@ -7,7 +7,7 @@ class HealthApi {
             url: 'https://bmi.p.rapidapi.com/',
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': '9fdfc9e902msh7067c2e3cfeb382p13e7e6jsn878b953e37c0',
+                'x-rapidapi-key': this.apiKey,
                 'x-rapidapi-host': 'bmi.p.rapidapi.com'
             },
             data : {
@@ -22,7 +22,7 @@ class HealthApi {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': '9fdfc9e902msh7067c2e3cfeb382p13e7e6jsn878b953e37c0',
+                'x-rapidapi-key': this.apiKey,
                 'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
                 useQueryString:true
             }
@@ -33,7 +33,7 @@ class HealthApi {
             params:{includeNutrition: "true"},
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': '9fdfc9e902msh7067c2e3cfeb382p13e7e6jsn878b953e37c0',
+                'x-rapidapi-key': this.apiKey,
                 'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
             }
         }

@@ -12,16 +12,16 @@ router.post('/user', async function (req, res) {
     const userReq = req.body
     const user = new User(userReq)
     console.log(user)
-    const age =  new Date().getFullYear() - user.birthdate.getFullYear()
+    const age = new Date().getFullYear() - user.birthdate.getFullYear()
     const result = await healthApi.getUserStatus(user.weight, user.height, user.gender, age)
     const status = new Status(result)
     user.status.push(status)
-     user.save().then(function (result) {
+    user.save().then(function (result) {
         res.send(user)
-     }).catch(function (err) {
-         res.send({error: "used email"})
-     })
-    
+    }).catch(function (err) {
+        res.send({ error: "used email" })
+    })
+
 })
 
 router.post('/signIn', async function (req, res) {
@@ -47,8 +47,7 @@ router.get('/user/:userID', async function (req, res) {
 router.put('/user/:userId/:weight', async function (req, res) {
     const { userId, weight } = req.params
     const user = await User.findById(userId)
-    const age =  new Date().getFullYear() - user.birthdate.getFullYear()
-    
+    const age = new Date().getFullYear() - user.birthdate.getFullYear()
     const result = await healthApi.getUserStatus(weight, user.height, user.gender, age)
     const status = new Status(result)
     status.trainingCalories = 400
@@ -57,26 +56,55 @@ router.put('/user/:userId/:weight', async function (req, res) {
     await user.save()
     res.send(user)
 })
+
+// trainers routes
 router.post('/trainer', async function (req, res) {
     const userReq = req.body
     const trainer = new Trainer(userReq)
-    
-     trainer.save().then(function (result) {
+    trainer.save().then(function (result) {
         res.send(result)
-     }).catch(function (err) {
-         res.send({error: "used email"})
-     })
-    
+    }).catch(function (err) {
+        res.send({ error: "used email" })
+    })
 })
 
-
-router.put('/userTrainer/:userID/:trainerID',async function (req,res) {
-    const {userID,tranerID} = req.params
+router.put('/userTrainer/:userID/:trainerID', async function (req, res) {
+    const { userID, trainerID } = req.params
     const user = await User.findById(userID)
-    const trainer = await Trainer.findById(tranerID)
-
-    // to be completed
+    const trainer = await Trainer.findById(trainerID)
+    console.log(user)
+    console.log(trainer)
+    user.trainer = trainer
+    trainer.trainees.push(user)
+    await user.save()
+    await trainer.save()
+    res.send({ user, trainer })
 })
+
+router.get('/trainer/:trainerID', async function (req, res) {
+    const { trainerID } = req.params
+    const trainer = await Trainer.findById(trainerID).populate("trainees").exec()
+
+    const trainees = trainer.trainees.map(t => {
+        return {
+            _id: t._id,
+            firstName: t.firstName,
+            lastName: t.lastName,
+            email: t.email,
+            phoneNo: t.phoneNo,
+            gender: t.gender,
+            birthdate: t.birthdate,
+            height: t.height,
+            weight: t.weight,
+            status: t.status,
+        }
+    })
+    trainer.trainees = []
+    res.send({trainer,trainees})
+
+})
+
+
 //Todo: create nutrition routes - farees
 
 
@@ -85,13 +113,13 @@ router.put('/userTrainer/:userID/:trainerID',async function (req,res) {
 
 
 
-router.get('/recipes/:recipeTime', async function(req, res){
+router.get('/recipes/:recipeTime', async function (req, res) {
     const { recipeTime } = req.params
     const recipesArr = await healthApi.getRecipe(recipeTime)
     res.send(recipesArr)
 })
 
-router.get('/nutrition/:recipeId', async function(req, res){
+router.get('/nutrition/:recipeId', async function (req, res) {
     const { recipeId } = req.params
     const nutrients = await healthApi.getRecipeNutrition(recipeId)
     res.send(nutrients)
