@@ -1,53 +1,90 @@
 const virtFitApp = new VirtFitAPP
 const renderer = new Renderer
 
-if (isLoggedIn()) {
-    renderer.renderSignIn()
+init()
 
+if (isLoggedIn()) {
+
+  
+
+    renderByType($('#type-of-user').val())
+
+    $('#type-of-user').change(function () {
+        const type = $(this).val()
+        localStorage.type = type
+        renderByType(type)
+    })
+
+
+    //User stufff
     $('#sign-in-sign-up').on('click', '#go-to-sign-up', function () {
         renderer.renderSignUp()
     })
     $('#sign-in-sign-up').on('click', '#go-to-sign-in', function () {
         renderer.renderSignIn()
     })
-    $('#sign-in-sign-up').on('click', '#sign-in',async function () {
+    $('#sign-in-sign-up').on('click', '#sign-in', async function () {
         const emailPass = {
-            email : $('#email').val(),
-            password : $('#password').val()
+            email: $('#email').val(),
+            password: $('#password').val()
         }
-        const signInFunction = getSignInFunction()
-
-        console.log(signInFunction)
-
-        const user = await signInFunction(emailPass)
-        if(user.error)
+        const user = await virtFitApp.signInUser(emailPass)
+        if (user.error)
             $('#err').empty().text(user.error)
-        else{
-            const path = getPath()
-
+        else {
             localStorage.id = user._id
-            location.assign(path)
+            location.assign(`./user/user.html`)
         }
     })
 
-    $('#sign-in-sign-up').on('click', '#sign-up',async function () {
+    $('#sign-in-sign-up').on('click', '#sign-up', async function () {
         const user = extractSignUpInputs()
         const missingInput = missingInputCheck(user)
 
-        if(missingInput)
+        if (missingInput)
             $('#err').empty().text(`${missingInput} is missing`)
-        else{
-            const signUpFunction = getSignUpFunction()()
-            const path = getPath()
-
-            const newUser = await signUpFunction(user)
+        else {
+            const newUser = await virtFitApp.creatNewUser(user)
             localStorage.id = newUser._id
-            location.assign(path)
+            location.assign(`./user/user.html`)
         }
     })
-    
+
+    //trainer stuff
+
+    $('#sign-in-sign-up').on('click', '#go-to-trainer-sign-up', function () {
+        renderer.renderTrainerSignUp()
+    })
+    $('#sign-in-sign-up').on('click', '#go-to-trainer-sign-in', function () {
+        renderer.renderTrainerSignIn()
+    })
+    $('#sign-in-sign-up').on('click', '#trainer-sign-in', async function () {
+        email = $('#email').val()
+        password = $('#password').val()
+        const trainer = await virtFitApp.signInTrainer(email,password)
+        console.log(trainer)
+        if (trainer.error)
+            $('#err').empty().text(trainer.error)
+        else {
+            localStorage.id = trainer._id
+            location.assign(`./trainer/trainer.html`)
+        }
+    })
+
+    $('#sign-in-sign-up').on('click', '#trainer-sign-up', async function () {
+        const trainer = extractTrainerSignUpInputs()
+        const missingInput = missingInputCheck(trainer)
+
+        if (missingInput)
+            $('#err').empty().text(`${missingInput} is missing`)
+        else {
+            const newUser = await virtFitApp.createNewTrainer(trainer)
+            localStorage.id = newUser._id
+            location.assign(`./trainer/trainer.html`)
+        }
+    })
+
 }
-//createNewTrainer
 
 
 function isLoggedIn() {
@@ -59,32 +96,48 @@ function isLoggedIn() {
     return true
 }
 
-function extractSignUpInputs(){
+function extractSignUpInputs() {
     return {
-        firstName : $('#firstName').val(),
-        lastName : $('#lastName').val(),
-        email : $('#email').val(),
-        phoneNumber : $('#phoneNumber').val(),
-        gender : $('#gender').val(),
-        birthdate :new Date($('#birthDate').val()) ,
-        height : $('#height').val(),
-        weight : $('#weight').val(),
-        password : $('#password').val()
+        firstName: $('#firstName').val(),
+        lastName: $('#lastName').val(),
+        email: $('#email').val(),
+        phoneNumber: $('#phoneNumber').val(),
+        gender: $('#gender').val(),
+        birthdate: new Date($('#birthDate').val()),
+        height: $('#height').val(),
+        weight: $('#weight').val(),
+        password: $('#password').val()
     }
 }
-function missingInputCheck(user){
+function extractTrainerSignUpInputs() {
+    return {
+        firstName: $('#firstName').val(),
+        lastName: $('#lastName').val(),
+        email: $('#email').val(),
+        phoneNumber: $('#phoneNumber').val(),
+        gender: $('#gender').val(),
+        birthdate: new Date($('#birthDate').val()),
+        password: $('#password').val(),
+        bio: $('#bio').val(),
+        videoUrl: $('#videoUrl').val()
+    }
+}
+
+function missingInputCheck(user) {
     return Object.keys(user).find(key => user[key] === "" || user[key] == "Invalid Date")
 }
 
-
-function isTrainee() { return $('#type-of-user').val() === "trainee"}
-
-function getPath(){
-    return isTrainee() ? "./user/user.html" : "./trainer/trainer.html"
+function renderByType(type){
+    if (type === "trainee")
+        renderer.renderSignIn()
+    else
+        renderer.renderTrainerSignIn()
 }
-function getSignUpFunction(){
-    return isTrainee() ? virtFitApp.creatNewUser : virtFitApp.createNewTrainer
-}
-function getSignInFunction(){
-    return isTrainee() ? virtFitApp.signInUser : virtFitApp.signInTrainer
+
+function init() {
+    const type = localStorage.type
+    if (type === "trainer")
+        $('#type-of-user').val("trainer")
+    else
+        $('#type-of-user').val("trainee")
 }
