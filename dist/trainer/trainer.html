@@ -10,7 +10,7 @@
     <title>User</title>
 </head>
 <body>
-
+    
     <div id="navigation-bar">
         <div>logo</div>
         <div id="bar-items">
@@ -18,32 +18,39 @@
             <div id="user-name" class="bar-items">Name</div>
         </div>
     </div>
-
-
+    
+    
     <div id="container">
-        <div id="users-container">
+        <div id="trainers-container">
+
+            <div id="leftSide-container">
+                <div id="search">
+                    <button id="search-meal">Search meals</button> 
+                    <div id="options">
+                    </div>
+                </div>
             
+                <div id="recipes">
+                </div>
+            </div>  
+
+            <div id="rightSide-container">
+
+            </div>
         </div>
         
-        <div id="update-status">
+        <!-- <div id="update-status">
             <div id="weight-elements-container">
                 <div><input type="number" id="weight" placeholder="Weight(KG)"></div>
                 <button id="update">Update weight</button>
             </div>
             <button id="plan">Make plan</button>
-        </div>
-
-    </div>
-
-    <button id="search-meal">Search meals</button>
-    
-    <div id="options">
-
+        </div> -->
+        
     </div>
 
 
-
-    <script id="users-template" type="text/x-handlebars-template">
+    <script id="trainer-template" type="text/x-handlebars-template">
         {{#each user}}
         <div id="{{id}}" class="user">
             <h4>name: {{name}}</h4>
@@ -57,22 +64,31 @@
         {{/each}}
     </script>
 
-    <script id="users-template" type="text/x-handlebars-template">
-        {{#each recipe}}
-        <div id="{{id}}" class="user">
-            <h4>name: {{name}}</h4>
-            <div>Ideal weight is: {{status.idealWeight}}</h6></div>
-            <div>Current weight is: {{status.weight}}</div>
-            <div>bmrValue: {{status.bmrValue}}</div>
-            <div>Status: {{status.status}}</div>
-            <div>Risk: {{status.risk}}</div>
-            <button class="makePlane">Add a plan</button>
+
+    <script id="table-template" type="text/x-handlebars-template">
+        
+        <div id="table-container">
+            <div id="tableTopBar">
+
+            </div>
+            <div class="sun">{{sun}}</div>
+            <div class="mon">{{mon}}</div>
+            <div class="tus">{{tus}}</div>
+            <div class="wen">{{wen}}</div>
+            <div class="thu">{{thu}}</div>
+            <div class="fri">{{fri}}</div>
+            <div class="sat">{{sat}}</div>
+            <div class="breakfast">{{breakfast}}</div>
+            <div class="lunch">{{lunch}}</div>
+            <div class="dinner">{{dinner}}</div>
+            <div class="workOut">{{workOut}}</div>
+            <div>X21</div>
         </div>
-        {{/each}}
+            
+        <div id="sideBar">
+        </div>
+
     </script>
-
-
-
 
 
     <script id="meal-options-template" type="text/x-handlebars-template">
@@ -81,10 +97,25 @@
         <button id="lunch" class="option">Lunch</button>
     </script>
 
-    <!--recipes template TBD-->
+
     <script id="recipes-template" type="text/x-handlebars-template">
-        
+        {{#each recipe}}
+        <div data-id="{{id}}" class="recipe">
+            <div class="nutrition-container">
+
+            </div>
+            <div class="recipes-container">
+                <p>{{title}}</p>
+                <img src="https://spoonacular.com/recipeImages/{{image}}" alt="{{sourceUrl}}">
+                <p>prepare time: {{readyInMinutes}}</p>
+                <p>servings: {{servings}}</p>
+                <button id="AddRecipe">Add recipe</button>
+                <button id="see-nutrition">See nutrition</button>
+            </div>
+        </div>
+        {{/each}} 
     </script>
+
 
     <script src="../jquery/dist/jquery.js"></script>
     <script src="../handlebars/dist/handlebars.js"></script>
