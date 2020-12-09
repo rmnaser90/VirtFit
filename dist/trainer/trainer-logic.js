@@ -21,6 +21,11 @@ class TrainerLogic{
         return this.weekPlan
     }
 
+    getUserByID(userID){
+       const user = this.trainer.trainees.find(t => t._id === userID)
+       return user
+    }
+
     makePlane(userId){
         const user = this.trainer.trainees.find(u => u._id === userId)
         this.weekPlan = user.weeklyPlan  

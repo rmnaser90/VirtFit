@@ -20,6 +20,15 @@ async function init(){
 }
 /////////////////////
 
+$('#trainees-container').on('click','.traineeBox',function () {
+   const userID = $(this).attr('id')
+   const user = trainerLogic.getUserByID(userID)
+   renderer.renderUserStatus(user)
+})
+
+
+
+
 
 $('#rightSide-container').on('click', '.makePlane',async function(){
     const userId = $(this).closest('.user').attr('id')

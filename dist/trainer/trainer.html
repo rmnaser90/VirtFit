@@ -25,11 +25,12 @@
     <div id="container">
         <div id="trainees-container">
         </div>
+        <div id="user-status-container"></div>
 
     </div>
     <script id="trainee-template" type="text/x-handlebars-template">
     {{#each trainees}}
-    <div class="traineeBox">
+    <div class="traineeBox" id="{{_id}}">
         <p class="traineeName">{{firstName}} {{lastName}}</p>
 
     </div>
@@ -38,10 +39,9 @@
    
 
 
-    <script id="trainer-template" type="text/x-handlebars-template">
-        {{#each user}}
-        <div id="{{id}}" class="user">
-            <h4>name: {{name}}</h4>
+    <script id="User-template" type="text/x-handlebars-template">
+        <div id="{{_id}}" class="userStatus">
+            <h4>name: {{firstName}} {{lastName}}</h4>
             <div>Ideal weight is: {{status.idealWeight}}</h6></div>
             <div>Current weight is: {{status.weight}}</div>
             <div>bmrValue: {{status.bmrValue}}</div>
@@ -49,7 +49,6 @@
             <div>Risk: {{status.risk}}</div>
             <button class="makePlane">Add a plan</button>
         </div>
-        {{/each}}
     </script>
 
 

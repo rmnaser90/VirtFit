@@ -32,40 +32,17 @@ body{
 }
 
 #container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: cadetblue 1px solid;
+  
 }
 
-#update-status{
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    justify-items: center;
-    align-items: center;
+#trainees-container{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
-#weight-elements-container{
-    margin-top: 3vh;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    justify-items: center;
-}
-button{
-    height: 5vmin;
-    width: 30vmin;
-}
-
-#options{
-    margin-top: 1vh;
-}
-#options>button{
-    /* margin-top: 1vh;
-    margin-left: 1vh; */
-    width: 15vmin;
-    height: 3vmin;
-}
-
-
 .traineeBox{
+    margin: 10px;
     width: 200px;
     height: 100px;
     display: grid;
