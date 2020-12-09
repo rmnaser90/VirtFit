@@ -46,6 +46,23 @@ $('#recipes').on('click', '.nutrition-container', function(){
     renderer.showElement(recipeContainer)
 })
 
+$('#update').on('click', async function(){
+    const newWeight = $(this).closest('#weight-elements-container').find('#weight').val()
+    if(newWeight !== ""){
+        $(this).closest('#weight-elements-container').find('#weight').val("")
+        console.log(newWeight)
+        const user = await virtFitApp.updateUserStatus(localStorage.id, newWeight)
+        let updatedUser = formatStatusForRender(user)
+        updatedUser.status.isUpdated = true
+        renderer.renderStatus(updatedUser)
+    }
+})
+
+$('#find-trainer').on('click', async function(){
+    const trainersArr = 
+    renderer.renderTrainers(trainersArr)
+})
+
 
 
 

@@ -32,6 +32,7 @@
         </div>
     </div>
     <button id="search-meal">Search meals</button>
+    <button id="find-trainer">Find A Trainer</button>
     <div id="options">
 
     </div>
@@ -44,13 +45,21 @@
 
     <script id="status-template" type="text/x-handlebars-template">
         <div class="status-container">
+            {{#if status.isUpdated}}
+            <h4>{{firstName}}, your data has been updated as follow:</h4>
+            <div>Your status is {{status.status}}</div>
+            <div>And the risk is: {{status.risk}}</div>
+            <div>{{formatDate status.timeStamp}}</div>
+            <div>bmrValue: {{status.bmrValue}}</div>
+            {{else}}
             <h4>Hello {{firstName}}</h4>
             <div>Remember your ideal weight is: {{status.idealWeight}}</h6></div>
             <div>Current weight is: {{status.weight}}</div>
             <div>bmrValue: {{status.bmrValue}}</div>
-            <div>Status: {{status.status}}</div>
+            <div>Status:{{status.status}}</div>
             <div>Risk: {{status.risk}}</div>
             <div>{{formatDate status.timeStamp}}</div>
+            {{/if}}
         </div>
     </script>
 
