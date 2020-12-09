@@ -26,6 +26,21 @@ $('#trainees-container').on('click','.traineeBox',function () {
    renderer.renderUserStatus(user)
 })
 
+$('.mealButtons').on('click', async function () {
+    const meal = $(this).attr('id')
+    const recipies = await trainerLogic.getRecipes(meal)
+    renderer.renderRecipies(recipies)
+})
+
+$('#resultMealsContainer').on('click','.addRecipe',function () {
+    const recipeId = $(this).closest('.recipe').data('id')
+    const day = $(this).closest('.recipe').find('.daySelect').val()
+    const meal = $(this).closest('.recipe').find('.mealSelect').val()
+    trainerLogic.addMeal(recipeId,day,meal)
+    console.log(trainerLogic.weekPlan);
+    
+})
+
 
 
 

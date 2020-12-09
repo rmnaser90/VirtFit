@@ -17,6 +17,7 @@ class TrainerLogic{
 
     addMeal(recipeId, day, meal){
         const recipe = this.recipes.find(r => r.id === recipeId)
+        this.weekPlan[day]= this.weekPlan[day] || {}
         this.weekPlan[day][meal] = recipe
         return this.weekPlan
     }

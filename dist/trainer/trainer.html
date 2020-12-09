@@ -21,23 +21,26 @@
         </div>
     </div>
 
-
     <div id="container">
+        <h1 class="title">My Clients</h1>
         <div id="trainees-container">
         </div>
         <div id="userInfo">
-        <div id="user-status-container"></div>
-        <div id="userWeeklyPlan"></div>
-        </div>
-<div id="searchMealsContainer">
-    <div id="searchForMeal">
-        <h1>look for meals</h1>
-        <div class="mealButtons" id="breakfast">Breakfast</div>
-        <div class="mealButtons" id="lunch">Lunch</div>
-        <div class="mealButtons" id="dinner">Dinner</div>
-    </div>
+            <div id="user-status-container"></div>
+            <div id="userWeeklyPlan"></div>
+            <div id="searchMealsContainer">
+                <div id="searchForMeal">
+                    <h1 class="searchTitle">Look for Meals</h1>
+                    <div class="mealButtons" id="breakfast">Breakfast</div>
+                    <div class="mealButtons" id="lunch">Lunch</div>
+                    <div class="mealButtons" id="dinner">Dinner</div>
+                </div>
+                <div id="resultMealsContainer">
 
-</div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
@@ -69,38 +72,13 @@
     <script id="table-template" type="text/x-handlebars-template">
 
         <div id="table-container">
-            <div id="tableTopBar">
 
-            </div>
-            <div class="sun">{{sun}}</div>
-            <div class="mon">{{mon}}</div>
-            <div class="tus">{{tus}}</div>
-            <div class="wen">{{wen}}</div>
-            <div class="thu">{{thu}}</div>
-            <div class="fri">{{fri}}</div>
-            <div class="sat">{{sat}}</div>
-            <div class="breakfast">{{breakfast}}</div>
-            <div class="lunch">{{lunch}}</div>
-            <div class="dinner">{{dinner}}</div>
-            <div class="workOut">{{workOut}}</div>
-            <div>X21</div>
-        </div>
-            
-        <div id="sideBar">
         </div>
 
     </script>
-
-
-    <script id="meal-options-template" type="text/x-handlebars-template">
-        <button id="breakfast" class="option">Breakfast</button>
-        <button id="dinner" class="option">Dinner</button>
-        <button id="lunch" class="option">Lunch</button>
-    </script>
-
 
     <script id="recipes-template" type="text/x-handlebars-template">
-        {{#each recipe}}
+        {{#each recipies}}
         <div data-id="{{id}}" class="recipe">
             <div class="nutrition-container">
 
@@ -110,8 +88,26 @@
                 <img src="https://spoonacular.com/recipeImages/{{image}}" alt="{{sourceUrl}}">
                 <p>prepare time: {{readyInMinutes}}</p>
                 <p>servings: {{servings}}</p>
-                <button id="AddRecipe">Add recipe</button>
-                <button id="see-nutrition">See nutrition</button>
+                <div class="makePlanContainer">
+                    <select name="Day" class="daySelect">
+                        <option value="sunday">Sunday</option>
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                    </select>
+                    <select name="Meal" class="mealSelect">
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+    
+                    </select>
+                <button class="addRecipe">Add recipe</button>
+                <button class="see-nutrition">See nutrition</button>
+            </div>
+                
             </div>
         </div>
         {{/each}} 

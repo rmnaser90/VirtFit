@@ -50,23 +50,121 @@ body{
     justify-items: center;
     border-radius: 5px;
     background-color: antiquewhite;
+    cursor: pointer;
+  transition: 0.3s;
+}
+.traineeBox:hover{
     box-shadow: 0px 0px 10px 2px black;
+}
+#searchMealsContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 #searchForMeal{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     transition: 0.4s;
+    align-items: center;
+    justify-items: center;
 }
 #searchForMeal:hover .mealButtons{
-    width: 80%;
+    
     height: 50px;
     font-size: 100%;
 }
 .mealButtons{
-    width: 0px;
+    width: 80%;
     height: 0px;
     font-size: 0px;
     transition: 0.4s;
     background-color: cadetblue;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+}
+.mealButtons:hover{
+    box-shadow: 0px 0px 8px 2px black;
+}
+.searchTitle{
+display: grid;
+width: 95%;
+height: 50px;
+align-items: center;
+justify-items: center;
+background-color: cadetblue;
+cursor: pointer;
+}
+#resultMealsContainer{
+display: flex;
+flex-wrap: wrap;
+}
+
+
+.recipes-container{
+    position: relative;
+    display: grid;
+    height: 90%;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+   padding-bottom: 10%;
+}
+.recipe{
+    box-shadow: 3px 5px 2px rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 3px 5px 2px rgb(100, 100, 100);
+    background-color: cadetblue;
+    width: 30vmin;
+    margin: 20px;
+}
+.recipe:hover{
+    box-shadow: 3px 5px 2px rgb(197, 78, 78);
+}
+.recipe:active{
+    background-color: rgb(67, 111, 112);
+}
+
+.recipes-container>p{
+    font-size: 2vmin;
+    color: white;
+    border-bottom: black 1px solid;
+
+}
+img{
+    height: 15vmin;
+    width: 15vmin;
+    border-radius: 5px;
+    box-shadow: 3px 5px 2px rgb(100, 100, 100);
+}
+.makePlanContainer{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    bottom: 2px;
+    
+}
+.daySelect{
+width: 33%;
+margin-right: auto;
+margin-left: auto;
+}
+.mealSelect{
+width: 33%;
+margin-right: auto;
+margin-left: auto;
+}
+.addRecipe{
+width: 33%;
+margin-right: auto;
+margin-left: auto;
+}
+.see-nutrition{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
