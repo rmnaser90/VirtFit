@@ -61,7 +61,7 @@ if (isLoggedIn()) {
     $('#sign-in-sign-up').on('click', '#trainer-sign-in', async function () {
         email = $('#email').val()
         password = $('#password').val()
-        const trainer = await virtFitApp.signInTrainer(email,password)
+        const trainer = await virtFitApp.signInTrainer(email, password)
         console.log(trainer)
         if (trainer.error)
             $('#err').empty().text(trainer.error)
@@ -74,13 +74,16 @@ if (isLoggedIn()) {
     $('#sign-in-sign-up').on('click', '#trainer-sign-up', async function () {
         const trainer = extractTrainerSignUpInputs()
         const missingInput = missingInputCheck(trainer)
-
         if (missingInput)
             $('#err').empty().text(`${missingInput} is missing`)
         else {
-            const newUser = await virtFitApp.createNewTrainer(trainer)
-            localStorage.id = newUser._id
-            location.assign(`./trainer/trainer.html`)
+            const newTrainer = await virtFitApp.createNewTrainer(trainer)
+            if (newTrainer.error)
+                $('#err').empty().text(newTrainer.error)
+            else {
+                localStorage.id = newTrainer._id
+                location.assign(`./trainer/trainer.html`)
+            }
         }
     })
 
@@ -114,20 +117,20 @@ function extractTrainerSignUpInputs() {
         firstName: $('#firstName').val(),
         lastName: $('#lastName').val(),
         email: $('#email').val(),
+        bio: $('#bio').val(),
+        videoUrl: $('#videoUrl').val(),
         phoneNumber: $('#phoneNumber').val(),
         gender: $('#gender').val(),
         birthdate: new Date($('#birthDate').val()),
-        password: $('#password').val(),
-        bio: $('#bio').val(),
-        videoUrl: $('#videoUrl').val()
+        password: $('#password').val()
     }
 }
 
 function missingInputCheck(user) {
-    return Object.keys(user).find(key => user[key] === "" || user[key] == "Invalid Date")
+    return Object.keys(user).find(key => (key !== "bio" && key !== "videoUrl") && user[key] === "" || user[key] == "Invalid Date")
 }
 
-function renderByType(type){
+function renderByType(type) {
     if (type === "trainee")
         renderer.renderSignIn()
     else
