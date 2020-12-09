@@ -22,12 +22,18 @@ $('#search-meal').on('click',function(){
 $('#options').on('click','.option',function(){
     $('#options').empty()
 })
-
+///////////////////////////
 async function init(){
     id = localStorage.id
-    user = await virtFitApp.getUserFromDB(id)
-    console.log(user)
-
-
-    renderer.renderStatus(formatStatusForRender(user))
+    trainer = await trainerLogic.getTrainerFromDB(id)
+    
+    renderer.renderTrainer(trainer)
 }
+
+
+$('#search-meal').on('click', '.makePlane',async function(){
+    const userId = $(this).closest('.user').attr('id')
+    userId.weeklyPlan
+    tableObj =  trainerLogic.getTable(id)
+    renderer.makeTable(tableObj)
+})
