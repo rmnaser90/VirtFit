@@ -24,6 +24,7 @@ if (isLoggedIn()) {
         renderer.renderSignIn()
     })
     $('#sign-in-sign-up').on('click', '#sign-in', async function () {
+        loadGif()
         const emailPass = {
             email: $('#email').val(),
             password: $('#password').val()
@@ -35,9 +36,11 @@ if (isLoggedIn()) {
             localStorage.id = user._id
             location.assign(`./user/user.html`)
         }
+        removeLoadGif()
     })
 
     $('#sign-in-sign-up').on('click', '#sign-up', async function () {
+        loadGif()
         const user = extractSignUpInputs()
         const missingInput = missingInputCheck(user)
 
@@ -48,6 +51,7 @@ if (isLoggedIn()) {
             localStorage.id = newUser._id
             location.assign(`./user/user.html`)
         }
+        removeLoadGif()
     })
 
     //trainer stuff
@@ -59,6 +63,7 @@ if (isLoggedIn()) {
         renderer.renderTrainerSignIn()
     })
     $('#sign-in-sign-up').on('click', '#trainer-sign-in', async function () {
+        loadGif()
         email = $('#email').val()
         password = $('#password').val()
         const trainer = await virtFitApp.signInTrainer(email, password)
@@ -69,9 +74,11 @@ if (isLoggedIn()) {
             localStorage.id = trainer._id
             location.assign(`./trainer/trainer.html`)
         }
+        removeLoadGif()
     })
 
     $('#sign-in-sign-up').on('click', '#trainer-sign-up', async function () {
+        loadGif()
         const trainer = extractTrainerSignUpInputs()
         const missingInput = missingInputCheck(trainer)
         if (missingInput)
@@ -85,6 +92,7 @@ if (isLoggedIn()) {
                 location.assign(`./trainer/trainer.html`)
             }
         }
+        removeLoadGif()
     })
 
 }
@@ -150,4 +158,11 @@ function init() {
         $('#type-of-user').val("trainer")
     else
         $('#type-of-user').val("trainee")
+}
+
+function loadGif(){
+    $('body').append('<img src="https://i.gifer.com/Vp3R.gif" class="loading-gif" >')
+}
+function removeLoadGif(){
+    $('.loading-gif').remove()
 }

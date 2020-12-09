@@ -20,18 +20,16 @@ $('#search-meal').on('click',function(){
     renderer.renderMealOptions()
 })
 $('#options').on('click','.option',async function(){
-    $('#options').empty()
-    const recipeTime = $(this).attr('id')
-    const recipesArr = await virtFitApp.getRecipes(recipeTime)
-})
-$('#options').on('click','.option',async function(){
+    loadGif()
     $('#options').empty()
     const recipeTime = $(this).attr('id')
     const recipesArr = await virtFitApp.getRecipes(recipeTime)
     renderer.renderRecipes(recipesArr)
+    removeLoadGif()
 })
 // getRecipeNutrition()
 $('#recipes').on('click', '.recipes-container', async function(){
+    loadGif()
     const recipeContainer = $(this).closest('.recipe')
     const nutritionContainer = recipeContainer.find('.nutrition-container')
     const recipeId = recipeContainer.data('id')
@@ -39,6 +37,7 @@ $('#recipes').on('click', '.recipes-container', async function(){
     const nutrient = await virtFitApp.getRecipeNutrition(recipeId)
     renderer.renderNutrition(nutritionContainer,nutrient)
     renderer.hideElement($(this))
+    removeLoadGif()
 })
 $('#recipes').on('click', '.nutrition-container', function(){
     $(this).empty()
@@ -47,6 +46,7 @@ $('#recipes').on('click', '.nutrition-container', function(){
 })
 
 $('#update').on('click', async function(){
+    loadGif()
     const newWeight = $(this).closest('#weight-elements-container').find('#weight').val()
     if(newWeight !== ""){
         $(this).closest('#weight-elements-container').find('#weight').val("")
@@ -56,6 +56,7 @@ $('#update').on('click', async function(){
         updatedUser.status.isUpdated = true
         renderer.renderStatus(updatedUser)
     }
+    removeLoadGif()
 })
 
 $('#find-trainer').on('click', async function(){
@@ -63,16 +64,23 @@ $('#find-trainer').on('click', async function(){
     renderer.renderTrainers(trainersArr)
 })
 
-
+function loadGif(){
+    $('body').append('<img src="https://i.gifer.com/Vp3R.gif" class="loading-gif" >')
+}
+function removeLoadGif(){
+    $('.loading-gif').remove()
+}
 
 
 
 
 async function init(){
+    loadGif()
     id = localStorage.id
     user = await virtFitApp.getUserFromDB(id)
     console.log(user)
 
 
     renderer.renderStatus(formatStatusForRender(user))
+    removeLoadGif()
 }

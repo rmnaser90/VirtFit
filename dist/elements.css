@@ -31,3 +31,11 @@ button,input,select{
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
 }
+.loading-gif{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10vw;
+    height: 10vh;
+    
+}

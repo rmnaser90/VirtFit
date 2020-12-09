@@ -120,7 +120,7 @@ button{
     color: white;
     border-bottom: black 1px solid;
 }
-img{
+.recipes-container>img{
     height: 15vmin;
     width: 15vmin;
     border-radius: 5px;
