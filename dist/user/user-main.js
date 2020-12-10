@@ -41,8 +41,7 @@ function extractRecipesOptions() {
         cuisine: $('#cuisine').val(),
         diet: $('#diet').val(),
         intolerances: $('#intolerances').val(), 
-        // number: $('#number').val(),
-        // offset: $('#offset').val(),
+        number: 10,
         type: $('#type').val()
     }
 }

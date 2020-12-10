@@ -3,6 +3,7 @@ const moment = require('moment')
 const Schema = mongoose.Schema
 const StatusModule = require('./Status')
 const StatusSchema = StatusModule.StatusSchema
+
 const UserSchema = new Schema({
     firstName: String,
     lastName: String,

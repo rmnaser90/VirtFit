@@ -13,6 +13,9 @@ class Renderer {
 
         this.tableSource = $('#table-template').html()
         this.tableContainer =$('#weeklyPlan')
+
+        const nutritionSource = $('#nutrition-template').html();
+        this.nutritionTemplate = Handlebars.compile(nutritionSource); 
     }
     renderTainees(trainer){
         this.traineesContainer.empty()
@@ -43,5 +46,14 @@ class Renderer {
         const html = template(weeklyPlan)
         this.tableContainer.append(html)
     }
+
+    _handleBarAppender = (elementToAppendTo,Template,data) => {
+        let newHTML = Template(data);
+        elementToAppendTo.empty().append(newHTML);
+    }
+    showElement = element => element.css("visibility", "visible")
+    hideElement = element => element.css("visibility", "hidden")
+
+    renderNutrition = (nutritionContainer,nutrition) => this._handleBarAppender(nutritionContainer,this.nutritionTemplate,nutrition)
  
 }

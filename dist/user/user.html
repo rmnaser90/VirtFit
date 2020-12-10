@@ -124,6 +124,11 @@
             <p>{{name}}</p>
             <p>healthScore: {{healthScore}}</p>
             <p>likes: {{likes}}</p>
+            <ul>
+            {{#each nutrition}}
+                <li>{{title}}: {{amount}}</li>
+            {{/each}}
+            </ul>
         </div>
     </script>
 

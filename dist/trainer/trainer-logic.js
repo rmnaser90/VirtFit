@@ -3,6 +3,7 @@ class TrainerLogic{
  
     constructor(){
         this.trainer={}
+        this.currentTrainee
         this.weekPlan={}
         this.recipes=[]
         this.recipeNutrition=[]
@@ -11,10 +12,6 @@ class TrainerLogic{
     async getTrainerUsers(trainerId){
         const trainer = await apiManager.getTrainerUser(trainerId)
         this.trainer = trainer
-        // this.trainer.trainees.forEach(t => {
-        //     t.weeklyPlan = JSON.(t.weeklyPlan)
-        //     console.log(t.weeklyPlan)
-        // })
         return this.trainer
     }
 
@@ -28,11 +25,13 @@ class TrainerLogic{
 
     getUserByID(userID){
        const user = this.trainer.trainees.find(t => t._id === userID)
-       this.weekPlan = user.weeklyPlan
+       this.currentTrainee = userID
+       this.weekPlan = user.weeklyPlan || {}
        return user
     }
 
     async addPlan(userID){
+        console.log(this.weekPlan,userID)
         const response = await apiManager.addWorkPlan(userID,this.weekPlan)
         return response
     }

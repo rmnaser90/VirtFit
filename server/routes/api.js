@@ -8,6 +8,7 @@ const Status = require('../models/Status').Status
 const Trainer = require('../models/Trainer')
 
 
+
 router.post('/user', async function (req, res) {
     const userReq = req.body
     const user = new User(userReq)
@@ -127,7 +128,7 @@ router.post('/weekPlan/:userID', async function (req, res) {
 
 
 router.get('/recipes',async function (req, res) { 
-    const  params  = req.body
+    const  params  = req.query
     const recipesArr = await healthApi.getRecipe(params)
     res.send(recipesArr)
 })
@@ -135,9 +136,11 @@ router.get('/recipes',async function (req, res) {
 router.get('/nutrition/:recipeId', async function (req, res) {
     const { recipeId } = req.params
     const nutrients = await healthApi.getRecipeNutrition(recipeId)
+    const filteredNutrients = nutrients.nutrition.filter(n => n.title ===  "Calories" ||n.title === "Fat" ||n.title === "Sugar" ||n.title==="Protein")
+    nutrients.nutrition = filteredNutrients
     res.send(nutrients)
 })
-
+0
 
 
 module.exports = router

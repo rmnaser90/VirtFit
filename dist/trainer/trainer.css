@@ -64,28 +64,29 @@ body{
 #searchForMeal{
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(6,1fr);
     transition: 0.4s;
     align-items: center;
     justify-items: center;
 }
-#searchForMeal:hover .mealButtons{
-    
+#searchForMeal:hover .options{
+    visibility: visible;
     height: 50px;
     font-size: 100%;
 }
-.mealButtons{
+#searchForMeal>.options{
     width: 80%;
     height: 0px;
     font-size: 0px;
+    visibility: hidden;
     transition: 0.4s;
-    background-color: cadetblue;
+    /* background-color: cadetblue;
     display: grid;
     justify-items: center;
     align-items: center;
-    cursor: pointer;
+    cursor: pointer; */
 }
-.mealButtons:hover{
+#searchForMeal>.options:hover{
     box-shadow: 0px 0px 8px 2px black;
 }
 .searchTitle{
@@ -116,18 +117,17 @@ flex-wrap: wrap;
     box-shadow: 3px 5px 2px rgb(100, 100, 100);
     border-radius: 5px;
     padding: 10px;
-    cursor: pointer;
     box-shadow: 3px 5px 2px rgb(100, 100, 100);
     background-color: cadetblue;
     width: 30vmin;
+    height: 40vmin;
     margin: 20px;
 }
+
 .recipe:hover{
-    box-shadow: 3px 5px 2px rgb(197, 78, 78);
+    box-shadow: 0px 0px 8px 2px black;
 }
-.recipe:active{
-    background-color: rgb(67, 111, 112);
-}
+
 
 .recipes-container>p{
     font-size: 2vmin;
@@ -135,11 +135,18 @@ flex-wrap: wrap;
     border-bottom: black 1px solid;
 
 }
+.nutrition-container{
+    border-bottom: solid black 1px;
+    cursor: pointer;
+}
 img{
     height: 15vmin;
     width: 15vmin;
     border-radius: 5px;
     box-shadow: 3px 5px 2px rgb(100, 100, 100);
+}
+.loading-gif{
+    box-shadow: 3px 5px 2px transparent;
 }
 .makePlanContainer{
     display: flex;
@@ -190,4 +197,13 @@ table, th, td {
 }
 #weeklyPlanTable{
     width: 100%;
+}
+
+.loading-gif{
+    position: absolute;
+    left: 45vw;
+    top: 40vh;
+    width: 10vw;
+    height: 10vh;
+    
 }
