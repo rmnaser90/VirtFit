@@ -4,6 +4,11 @@ const virtFitApp = new VirtFitAPP()
 let id
 let user
 
+const fixer = function(myStr) {
+    const upperCase = myStr.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ')
+    return (upperCase)
+}
+
 const formatStatusForRender = (user) => {
     return {
         firstName: user.firstName,
@@ -116,6 +121,8 @@ $('#recipes-trainers').on('click', '.select-trainer', function () {
     const trainerId = $(this).closest('.trainer').data('id')
 
     virtFitApp.assignTrainer(userId, trainerId)
+    $('#recipes-trainers').empty()
+    console.log(user)
 })
 
 function loadGif() {
@@ -132,7 +139,12 @@ async function init() {
     id = localStorage.id
     user = await virtFitApp.getUserFromDB(id)
     $('#user-name').text(`${user.firstName} ${user.lastName}`)
-    if (user.trainer) $('#find-trainer').text('Change trainer')
+    if (user.trainer){ 
+        const trainer = await virtFitApp.getTrainerUser(user.trainer)
+        console.log(trainer)
+        $('#find-trainer').text(`Change ${fixer(trainer.firstName)} ${fixer(trainer.lastName)} with a new trainer`)
+
+    }
 
     renderer.renderStatus(formatStatusForRender(user))
     removeLoadGif()
