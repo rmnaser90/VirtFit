@@ -52,6 +52,8 @@ class VirtFitAPP{
 
     getTrainers = async () => await apiManager.getTrainers()
 
+    getTrainerUser = async trainerId => await apiManager.getTrainerUser(trainerId)
+
     async assignTrainer(userID,trainerID){
         const response = await apiManager.assignTrainer(userID,trainerID)
         return response
