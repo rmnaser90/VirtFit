@@ -74,15 +74,7 @@ button{
     width: 30vmin;
 }
 
-#options{
-    margin-top: 1vh;
-}
-#options>button{
-    /* margin-top: 1vh;
-    margin-left: 1vh; */
-    width: 15vmin;
-    height: 3vmin;
-}
+
 
 #recipes-trainers{
     margin-top: 10px;
@@ -154,4 +146,51 @@ button{
 .trainer>iframe{
     max-height: 20vh;
     max-width: 40vw;
+}
+
+
+
+#options{
+    margin-top: 1vh;
+}
+#options>button{
+    /* margin-top: 1vh;
+    margin-left: 1vh; */
+    width: 15vmin;
+    height: 3vmin;
+}
+.searchTitle {
+    display: grid;
+    width: 95%;
+    height: 50px;
+    align-items: center;
+    justify-items: center;
+    background-color: cadetblue;
+    cursor: pointer;
+}
+#options:hover .options {
+    visibility: visible;
+    height: 50px;
+    font-size: 100%;
+}
+
+#options>.options {
+    width: 80%;
+    height: 0px;
+    font-size: 0px;
+    visibility: hidden;
+    transition: 0.4s;
+
+}
+
+#options>.options:hover {
+    box-shadow: 0px 0px 8px 2px black;
+}
+#options {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    transition: 0.4s;
+    align-items: center;
+    justify-items: center;
 }

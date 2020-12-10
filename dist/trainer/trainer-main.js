@@ -40,6 +40,7 @@ $('#resultMealsContainer').on('click', '.addRecipe', function () {
     const day = $(this).closest('.recipe').find('.daySelect').val()
     const meal = $(this).closest('.recipe').find('.mealSelect').val()
     trainerLogic.addMeal(recipeId, day, meal)
+    renderer.renderTable(trainerLogic.weekPlan)
 })
 
 $('#userInfo').on('click', '#addWeekPlan', async function () {
