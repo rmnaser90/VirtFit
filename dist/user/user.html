@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@800&display=swap"
         rel="stylesheet">
-    <title>Virtfit Trainers</title>
+    <title>Virtfit Trainee</title>
 </head>
 <body>
 
@@ -28,10 +28,9 @@
                 <div><input type="number" id="weight" min="0" placeholder="Weight(KG)"></div>
                 <button id="update">Update weight</button>
             </div>
-            <button id="plan">Make plan</button>
+            <button id="plan">Plan</button>
         </div>
     </div>
-    <button id="search-meal">Search meals</button>
     <button id="find-trainer">Find A Trainer</button>
     <div id="options">
         <h1 class="searchTitle">Look for Meals</h1>
@@ -136,6 +135,58 @@
         </div>
         {{/each}}
     </script>
+
+
+
+    <script id="table-template" type="text/x-handlebars-template">
+
+        <table id="weeklyPlanTable">
+            <tr>
+                
+                <th class="mealName">Meal</th>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Tuesday</th>
+            </tr>
+            <tr>
+                <td class="mealName">Breakfast</td>
+                <td id="{{sunday.breakfast.id}}"><a href="{{sourceUrl}}">{{sunday.breakfast.title}}</a></td>
+                <td id="{{monday.breakfast.id}}"><a href="{{sourceUrl}}">{{monday.breakfast.title}}</a></td>
+                <td id="{{tuesday.breakfast.id}}"><a href="{{sourceUrl}}">{{tuesday.breakfast.title}}</a></td>
+                <td id="{{wednesday.breakfast.id}}"><a href="{{sourceUrl}}">{{wednesday.breakfast.title}}</a></td>
+                <td id="{{thursday.breakfast.id}}"><a href="{{sourceUrl}}">{{thursday.breakfast.title}}</a></td>
+                <td id="{{friday.breakfast.id}}"><a href="{{sourceUrl}}">{{friday.breakfast.title}}</a></td>
+                <td id="{{saturday.breakfast.id}}"><a href="{{sourceUrl}}">{{saturday.breakfast.title}}</a></td>
+                
+            </tr>
+            <tr>
+                <td class="mealName">Lunch</td>
+                <td id="{{sunday.lunch.id}}"><a href="{{sourceUrl}}">{{sunday.lunch.title}}</a></td>
+                <td id="{{monday.lunch.id}}"><a href="{{sourceUrl}}">{{monday.lunch.title}}</a></td>
+                <td id="{{tuesday.lunch.id}}"><a href="{{sourceUrl}}">{{tuesday.lunch.title}}</a></td>
+                <td id="{{wednesday.lunch.id}}"><a href="{{sourceUrl}}">{{wednesday.lunch.title}}</a></td>
+                <td id="{{thursday.lunch.id}}"><a href="{{sourceUrl}}">{{thursday.lunch.title}}</a></td>
+                <td id="{{friday.lunch.id}}"><a href="{{sourceUrl}}">{{friday.lunch.title}}</a></td>
+                
+            </tr>
+            <tr>
+                <td class="mealName">Dinner</td>
+                <td id="{{sunday.dinner.id}}"><a href="{{sourceUrl}}">{{sunday.dinner.title}}</a></td>
+                <td id="{{monday.dinner.id}}"><a href="{{sourceUrl}}">{{monday.dinner.title}}</a></td>
+                <td id="{{tuesday.dinner.id}}"><a href="{{sourceUrl}}">{{tuesday.dinner.title}}</a></td>
+                <td id="{{wednesday.dinner.id}}"><a href="{{sourceUrl}}">{{wednesday.dinner.title}}</a></td>
+                <td id="{{thursday.dinner.id}}"><a href="{{sourceUrl}}">{{thursday.dinner.title}}</a></td>
+                <td id="{{friday.dinner.id}}"><a href="{{sourceUrl}}">{{friday.dinner.title}}</a></td>
+                
+            </tr>
+            
+        </table>
+        </script>
+    
 
 
     <script src="../jquery/dist/jquery.js"></script>

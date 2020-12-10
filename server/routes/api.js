@@ -111,6 +111,7 @@ router.get('/trainer/:trainerID', async function (req, res) {
 
 router.get('/trainers', async function (req, res) {
     const trainers = await Trainer.find({})
+    console.log(trainers)
     const trainersMapped = trainers.map(trainer => { return {_id: trainer["_id"],firstName: trainer["firstName"] ,
     lastName: trainer["lastName"],gender: trainer["gender"],bio: trainer["bio"],videoUrl: trainer["videoUrl"]}})
 
@@ -120,7 +121,10 @@ router.get('/trainers', async function (req, res) {
 router.post('/weekPlan/:userID', async function (req, res) {
     const { userID } = req.params
     const weeklyPlan = req.body
+    console.log(weeklyPlan,userID)
     const user = await User.findById(userID)
+    console.log("hiii")
+    console.log(user)
     user.weeklyPlan = weeklyPlan
     user.save()
     res.send(user)

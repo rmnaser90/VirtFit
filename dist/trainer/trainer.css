@@ -213,11 +213,11 @@ table, th, td {
 }
 
 #weeklyPlan {
-    width: 100%;
+    width: 100vw;
 }
 
 #weeklyPlanTable {
-    width: 100%;
+    width: 100vw;
 }
 
 .loading-gif {
