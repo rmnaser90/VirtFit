@@ -17,13 +17,12 @@ class ApiManager{
 
     async updateUserStatus(userId, userWeight){
         console.log(userId, userWeight)
-        //  = await $.put(`/user/${userId}/${userWeight}`) //`/user?userId=${userId}&weight=${userWeight}`
         const updatedUser = await $.ajax({url:`/user/${userId}/${userWeight}`,type: 'PUT'})
         return (updatedUser)
     }
     
-    async getRecipes(recipeTime){
-        const recipesArr = await $.get(`/recipes/${recipeTime}`)
+    async getRecipes(params){
+        const recipesArr = await $.get(`/recipes`, params) // /${recipeTime}
         return (recipesArr)
     }
     

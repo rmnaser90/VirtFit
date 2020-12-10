@@ -57,27 +57,17 @@ class HealthApi {
             idealWeight:response.data.ideal_weight,
             bmrValue:response.data.bmr.value,
             timeStamp: Date.now()
-            
-            
         }
         console.log(relevantData);
         return relevantData
     } 
 
-    async getRecipe(recipeTime){
-        this.recipes.url =`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?type=${recipeTime}`
+    async getRecipe(params){
+        this.recipes.params = params        
+        // this.recipes.url =`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?type=${recipeTime}`
+        this.recipes.url =`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search`
         const recipesArr = await  this.axios.request(this.recipes)
         return recipesArr.data.results
-        // returns array of 10 recipes :
-        // {
-        //     id: 667917,
-        //     title: 'Cilantro Salsa',
-        //     readyInMinutes: 20,
-        //     servings: 2,
-        //     sourceUrl: 'http://www.thegraciouspantry.com/clean-eating-cilantro-salsa/',
-        //     openLicense: 0,
-        //     image: 'Cilantro-Salsa-667917.jpg'
-        //   },
     }
 
     async getRecipeNutrition(recipeId){
@@ -86,17 +76,15 @@ class HealthApi {
         const relevantNutrition={
             id: nutritionData.data.id,
             name: nutritionData.data.title,   
-            vegetarian: nutritionData.data.vegetarian, //boolean
-            vegan: nutritionData.data.vegan,//boolean
-            glutenFree: nutritionData.data.glutenFree, //boolean
-            healthScore: nutritionData.data.healthScore, //number
-            likes: nutritionData.data.aggregateLikes,//number
-            nutrition: nutritionData.data.nutrition.nutrients//array //{ title: 'Vitamin A',amount: 90.6,unit: 'IU',percentOfDailyNeeds: 1.81}    
+            vegetarian: nutritionData.data.vegetarian,
+            vegan: nutritionData.data.vegan,
+            glutenFree: nutritionData.data.glutenFree, 
+            healthScore: nutritionData.data.healthScore, 
+            likes: nutritionData.data.aggregateLikes,
+            nutrition: nutritionData.data.nutrition.nutrients   
         }
         return relevantNutrition
     }
-
-
 }
 
 
