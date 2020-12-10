@@ -27,51 +27,51 @@
         </div>
         <div id="userInfo">
             <div id="user-status-container"></div>
-            <div id="weeklyPlan">  </div>
+            <div id="weeklyPlan"> </div>
             <div id="searchMealsContainer">
-                
-                   
-                    <div id="searchForMeal">
-                        <h1 class="searchTitle">Look for Meals</h1>
-                        <select class="options" name="cuisine" id="cuisine">
-                            <option value="" disabled selected>Choose Cuisine</option>
-                            <option value="chinese">Chinese</option>
-                            <option value="british">British</option>
-                            <option value="french">French</option>
-                            <option value="mexican">Mexican</option>
-                            <option value="middle-eastern">Middle Eastern</option>
-                            <option value="spanish">Spanish</option>
-                          </select>
-                        <select class="options" name="diet" id="diet">
-                            <option disabled selected>Choose Diet</option>
-                            <option value="vegetarian">Vegetarian</option>
-                            <option value="vegan">Vegan</option>
-                          </select>
-                        <select class="options" name="intolerances" id="intolerances">
-                            <option disabled selected>Choose Intolerances</option>
-                            <option value="egg">Egg</option>
-                            <option value="gluten">Gluten</option>
-                            <option value="peanut">Peanut</option>
-                            <option value="sesame">Sesame</option>
-                            <option value="seafood">Seafood</option>
-                        </select>
-                        <select class="options" name="type" id="type">
-                            <option disabled selected>Choose Type</option>
-                            <option value="main-course">Main course</option>
-                            <option value="side-dish">Side dish</option>
-                            <option value="dessert">Dessert</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="salad">Salad</option>
-                        </select>
-                        <button id="lunch" class="options">Submit</button> 
-                    </div>
-              
+
+
+                <div id="searchForMeal">
+                    <h1 class="searchTitle">Look for Meals</h1>
+                    <select class="options" name="cuisine" id="cuisine">
+                        <option value="" disabled selected>Choose Cuisine</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="british">British</option>
+                        <option value="french">French</option>
+                        <option value="mexican">Mexican</option>
+                        <option value="middle-eastern">Middle Eastern</option>
+                        <option value="spanish">Spanish</option>
+                    </select>
+                    <select class="options" name="diet" id="diet">
+                        <option disabled selected>Choose Diet</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                    </select>
+                    <select class="options" name="intolerances" id="intolerances">
+                        <option disabled selected>Choose Intolerances</option>
+                        <option value="egg">Egg</option>
+                        <option value="gluten">Gluten</option>
+                        <option value="peanut">Peanut</option>
+                        <option value="sesame">Sesame</option>
+                        <option value="seafood">Seafood</option>
+                    </select>
+                    <select class="options" name="type" id="type">
+                        <option disabled selected>Choose Type</option>
+                        <option value="main-course">Main course</option>
+                        <option value="side-dish">Side dish</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="salad">Salad</option>
+                    </select>
+                    <button id="lunch" class="options">Submit</button>
+                </div>
+
                 <div id="resultMealsContainer">
-                    
+
                 </div>
             </div>
         </div>
-       
+
 
     </div>
 
@@ -101,7 +101,7 @@
     </script>
 
 
-    
+
     <script id="recipes-template" type="text/x-handlebars-template">
         {{#each recipies}}
         <div data-id="{{id}}" class="recipe">

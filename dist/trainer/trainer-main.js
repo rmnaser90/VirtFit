@@ -3,11 +3,11 @@ const trainerLogic = new TrainerLogic()
 
 let id
 
-const formatStatusForRender = (user) => { return {firstName: user.firstName, status: user.status[user.status.length-1]} }
+const formatStatusForRender = (user) => { return { firstName: user.firstName, status: user.status[user.status.length - 1] } }
 
 init()
 
-async function init(){
+async function init() {
     loadGif()
     id = localStorage.id
     const trainer = await trainerLogic.getTrainerUsers(id)
@@ -15,17 +15,16 @@ async function init(){
     removeLoadGif()
 }
 
-$('#logout').on('click',function(){
+$('#logout').on('click', function () {
     localStorage.removeItem("id")
     location.assign(`../index.html`)
 })
 
-$('#trainees-container').on('click','.traineeBox',async function () {
-   const userID = $(this).data('id')
-   const user = await trainerLogic.getUserByID(userID)
-   console.log(user,userID)
-   renderer.renderUserStatus(user)
-   renderer.renderTable(trainerLogic.weekPlan)
+$('#trainees-container').on('click', '.traineeBox', async function () {
+    const userID = $(this).data('id')
+    const user = await trainerLogic.getUserByID(userID)
+    renderer.renderUserStatus(user)
+    renderer.renderTable(trainerLogic.weekPlan)
 })
 
 $('.mealButtons').on('click', async function () {
@@ -36,21 +35,19 @@ $('.mealButtons').on('click', async function () {
     removeLoadGif()
 })
 
-$('#resultMealsContainer').on('click','.addRecipe',function () {
+$('#resultMealsContainer').on('click', '.addRecipe', function () {
     const recipeId = $(this).closest('.recipe').data('id')
     const day = $(this).closest('.recipe').find('.daySelect').val()
     const meal = $(this).closest('.recipe').find('.mealSelect').val()
-    trainerLogic.addMeal(recipeId,day,meal)
-    console.log(trainerLogic.weekPlan,recipeId,day,meal);
+    trainerLogic.addMeal(recipeId, day, meal)
 })
 
-$('#userInfo').on('click','#addWeekPlan', async function () {
+$('#userInfo').on('click', '#addWeekPlan', async function () {
     loadGif()
     const userID = trainerLogic.currentTrainee
-    console.log(userID)
     const response = await trainerLogic.addPlan(userID)
     renderer.renderTable(trainerLogic.weekPlan)
-    removeLoadGif()//********************************************* */
+    removeLoadGif()
 })
 
 
@@ -59,13 +56,13 @@ $('#userInfo').on('click','#addWeekPlan', async function () {
 
 
 
-$('#rightSide-container').on('click', '.makePlane',async function(){
+$('#rightSide-container').on('click', '.makePlane', async function () {
     const userId = $(this).closest('.user').attr('id')
     const userPlan = trainerLogic.makePlane(userId) // return object 
     // trainerRenderer.makeTable(userPlan) /// should template ('#table-template')
 })
 
-$('#options').on('click','.option',async function(){
+$('#options').on('click', '.option', async function () {
     loadGif()
     $('#options').empty()
     const recipeTime = $(this).attr('id')
@@ -73,10 +70,9 @@ $('#options').on('click','.option',async function(){
     // trainerRenderer.renderRecipes(recipesArr) /// should display recipes on the leftSide bar
     removeLoadGif()
 })
-$('#lunch').on('click',async function(){
+$('#lunch').on('click', async function () {
     loadGif()
     const params = extractRecipesOptions()
-    console.log(params )
     const recipesArr = await trainerLogic.getRecipes(params)
     renderer.renderRecipies(recipesArr)
     removeLoadGif()
@@ -87,7 +83,7 @@ function extractRecipesOptions() {
     return {
         cuisine: $('#cuisine').val(),
         diet: $('#diet').val(),
-        intolerances: $('#intolerances').val(), 
+        intolerances: $('#intolerances').val(),
         number: 10,
         type: $('#type').val()
     }
@@ -95,7 +91,7 @@ function extractRecipesOptions() {
 
 
 
-$('#leftSide-container').on('click', '#see-nutrition', async function(){
+$('#leftSide-container').on('click', '#see-nutrition', async function () {
     loadGif()
     const recipeId = $(this).closest('.recipe').data('id')
     const recipe = trainerLogic.getSearchedRecipe(recipeId)
@@ -104,25 +100,23 @@ $('#leftSide-container').on('click', '#see-nutrition', async function(){
     removeLoadGif()
 })
 
-$('#resultMealsContainer').on('click','.see-nutrition',async function(){
+$('#resultMealsContainer').on('click', '.see-nutrition', async function () {
     loadGif()
     const recipeId = $(this).closest('.recipe').data('id')
     const nutrient = await trainerLogic.getRecipeNutrition(recipeId)
-    
+
     const recipeContainer = $(this).closest('.recipes-container')
     renderer.hideElement(recipeContainer)
-    
+
     const nutritionContainer = $(this).closest('.recipe').find('.nutrition-container')
-    
-    renderer.renderNutrition(nutritionContainer,nutrient)
-    
-    console.log(nutrient,nutritionContainer)
+
+    renderer.renderNutrition(nutritionContainer, nutrient)
     removeLoadGif()
 })
-$('#resultMealsContainer').on('click','.nutrition-container',async function(){
+$('#resultMealsContainer').on('click', '.nutrition-container', async function () {
     const recipeContainer = $(this).closest('.recipe').find('.recipes-container')
     renderer.showElement(recipeContainer)
-    
+
     const nutritionContainer = $(this).closest('.nutrition-container')
 
     nutritionContainer.empty()
