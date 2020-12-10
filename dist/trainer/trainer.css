@@ -118,8 +118,8 @@ body {
 .recipes-container {
     position: relative;
     display: grid;
-    height: 90%;
-    grid-template-rows: 1fr 2fr 1fr 1fr;
+    height: 45vh;
+    grid-template-rows: 1fr 2fr 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
     padding-bottom: 10%;
@@ -132,7 +132,7 @@ body {
     box-shadow: 3px 5px 2px rgb(100, 100, 100);
     background-color: cadetblue;
     width: 30vmin;
-    height: 40vmin;
+    height: 50vh;
     margin: 20px;
 }
 
@@ -167,6 +167,9 @@ img {
     flex-wrap: wrap;
     position: absolute;
     bottom: 2px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
 }
 
 .daySelect {
@@ -213,11 +216,11 @@ table, th, td {
 }
 
 #weeklyPlan {
-    width: 100vw;
+    width: 100%;
 }
 
 #weeklyPlanTable {
-    width: 100vw;
+    width: 100%;
 }
 
 .loading-gif {
@@ -226,4 +229,89 @@ table, th, td {
     top: 40vh;
     width: 10vw;
     height: 10vh;
+}
+
+.sl1 {
+    margin-top: 5px;
+    background-color: rgb(184, 197, 197);
+    box-shadow: 1px 1px 1px black;
+    border-radius: 2px;
+    border: transparent;
+    height: 2.5vh;
+    width: 5vw;
+    color: white;
+}
+
+.sl {
+    background-color: rgb(67, 111, 112);
+}
+
+.sl{
+    background-color: wheat;
+    border: transparent;
+    border-bottom: black 2px solid;
+    border-radius: 2px;
+    padding: 5px;
+    height: 2.5vh;
+    width: 4vw;
+}
+
+.sl {
+    color: black;
+}
+
+.sl {
+    color: rgb(117, 117, 117);
+}
+.sl,.sl1{
+    -moz-box-sizing: content-box; 
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+
+}
+.cont{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#searchForMeal>button{
+    background-color: cadetblue;
+    box-shadow: 1px 1px 1px black;
+    border-radius: 2px;
+    border: transparent;
+    height: 4vmin;
+    color: white;
+}
+#searchForMeal>button {
+    background-color: cadetblue;
+    box-shadow: 1px 1px 1px black;
+    border-radius: 2px;
+    border: transparent;
+    height: 4vmin;
+    color: white;
+}
+#searchForMeal>button:active{
+    background-color: rgb(67, 111, 112);
+}
+#searchForMeal>select {
+    background-color: wheat;
+    border: transparent;
+    border-bottom: black 2px solid;
+    width: 30vmin;
+    height: 5vmin;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+#searchForMeal>input {
+    color: black;
+}
+#searchForMeal>input::placeholder {
+    color: rgb(117, 117, 117);
+}
+
+#searchForMeal>button,#searchForMeal>input,#searchForMeal>select{
+    -moz-box-sizing: content-box; 
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
 }

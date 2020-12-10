@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="trainer.css">
-    <link rel="stylesheet" href="../elements.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@800&display=swap"
         rel="stylesheet">
@@ -115,23 +114,25 @@
                 <p>prepare time: {{readyInMinutes}}</p>
                 <p>servings: {{servings}}</p>
                 <div class="makePlanContainer">
-                    <select name="Day" class="daySelect">
-                        <option value="sunday">Sunday</option>
-                        <option value="monday">Monday</option>
-                        <option value="tuesday">Tuesday</option>
-                        <option value="wednesday">Wednesday</option>
-                        <option value="thursday">Thursday</option>
-                        <option value="friday">Friday</option>
-                        <option value="saturday">Saturday</option>
-                    </select>
-                    <select name="Meal" class="mealSelect">
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-    
-                    </select>
-                <button class="addRecipe">Add recipe</button>
-                <button class="see-nutrition">See nutrition</button>
+                    <div class="cont">
+                        <select name="Day" class="daySelect sl">
+                            <option value="sunday">Sunday</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                            <option value="saturday">Saturday</option>
+                        </select>
+                        <select name="Meal" class="mealSelect sl">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+        
+                        </select>
+                        <button class="addRecipe sl1">Add recipe</button>
+                    </div>
+                <button class="see-nutrition sl1">See nutrition</button>
             </div>
                 
             </div>
