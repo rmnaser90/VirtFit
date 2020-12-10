@@ -203,6 +203,7 @@ img {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    height: 40px;
 }
 
 #addWeekPlan {
@@ -246,7 +247,7 @@ table, th, td {
     box-shadow: 1px 1px 1px black;
     border-radius: 2px;
     border: transparent;
-    height: 2.5vh;
+   
     width: 5vw;
     color: white;
 }
