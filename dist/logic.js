@@ -31,8 +31,8 @@ class VirtFitAPP{
         return this.user
     } 
 
-    async getRecipes(recipeTime){
-        const recipesArr = await apiManager.getRecipes(recipeTime)
+    async getRecipes(params){
+        const recipesArr = await apiManager.getRecipes(params)
         this.recipes = recipesArr
         return this.recipes
     }
@@ -51,6 +51,11 @@ class VirtFitAPP{
     createNewTrainer = async newTrainer => await apiManager.createNewTrainer(newTrainer)
 
     getTrainers = async () => await apiManager.getTrainers()
+
+    async assignTrainer(userID,trainerID){
+        const response = await apiManager.assignTrainer(userID,trainerID)
+        return response
+    }
 }
 
 
