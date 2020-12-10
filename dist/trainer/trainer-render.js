@@ -10,6 +10,9 @@ class Renderer {
 
         this.recipiesSource = $('#recipes-template').html()
         this.resultMealsContainer = $('#resultMealsContainer')
+
+        this.tableSource = $('#table-template').html()
+        this.tableContainer =$('#weeklyPlan')
     }
     renderTainees(trainer){
         this.traineesContainer.empty()
@@ -33,6 +36,12 @@ class Renderer {
         const template = Handlebars.compile(this.recipiesSource)
         const html = template({recipies})
         this.resultMealsContainer.append(html)
+    }
+    renderTable(weeklyPlan){
+        this.tableContainer.empty()
+        const template = Handlebars.compile(this.tableSource)
+        const html = template(weeklyPlan)
+        this.tableContainer.append(html)
     }
  
 }

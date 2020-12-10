@@ -11,6 +11,10 @@ class TrainerLogic{
     async getTrainerUsers(trainerId){
         const trainer = await apiManager.getTrainerUser(trainerId)
         this.trainer = trainer
+        // this.trainer.trainees.forEach(t => {
+        //     t.weeklyPlan = JSON.(t.weeklyPlan)
+        //     console.log(t.weeklyPlan)
+        // })
         return this.trainer
     }
 
@@ -24,6 +28,7 @@ class TrainerLogic{
 
     getUserByID(userID){
        const user = this.trainer.trainees.find(t => t._id === userID)
+       this.weekPlan = user.weeklyPlan
        return user
     }
 

@@ -7,23 +7,23 @@ const formatStatusForRender = (user) => { return {firstName: user.firstName, sta
 
 init()
 
-$('#logout').on('click',function(){
-    localStorage.removeItem("id")
-    location.assign(`../index.html`)
-})
-
-///////////////////////////
 async function init(){
     id = localStorage.id
     const trainer = await trainerLogic.getTrainerUsers(id)
     renderer.renderTainees(trainer)
 }
-/////////////////////
+
+$('#logout').on('click',function(){
+    localStorage.removeItem("id")
+    location.assign(`../index.html`)
+})
 
 $('#trainees-container').on('click','.traineeBox',function () {
    const userID = $(this).attr('id')
    const user = trainerLogic.getUserByID(userID)
    renderer.renderUserStatus(user)
+   console.log(trainerLogic.weekPlan);
+   renderer.renderTable(trainerLogic.weekPlan)
 })
 
 $('.mealButtons').on('click', async function () {
@@ -40,6 +40,14 @@ $('#resultMealsContainer').on('click','.addRecipe',function () {
     console.log(trainerLogic.weekPlan);
     
 })
+
+$('#userInfo').on('click','#addWeekPlan', async function () {
+    const userID = $(this).closest('.userStatus').attr('id')
+    const response = await trainerLogic.addPlan(userID)
+    renderer.renderTable(trainerLogic.weekPlan)
+})
+
+
 
 
 
