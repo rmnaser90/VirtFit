@@ -18,6 +18,18 @@ class Renderer {
         Handlebars.registerHelper('formatDate', dateString => moment(dateString).format('MMMM Do YYYY, h:mm:ss a'))
 
         Handlebars.registerHelper('genderCheck', gender => gender === "m" ? "Male" : "Female")
+        Handlebars.registerHelper('formatUrl', url => `https://www.youtube.com/embed/${url.split("/")[3]}`)
+        Handlebars.registerHelper('equal', function(url, options) {
+            if (arguments.length < 2)
+                throw new Error("Handlebars Helper equal needs 1 parameter");
+            const urlRegex = RegExp('https://youtu.be/[^ ]+')
+            if( urlRegex.test(url) ) {
+                return options.fn(this);
+            } else {
+                return options.inverse(this);
+            }
+        });
+        
     }
 
     _handleBarAppender = (elementToAppendTo,Template,data) => {

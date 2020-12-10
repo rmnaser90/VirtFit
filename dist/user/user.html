@@ -16,7 +16,7 @@
         <div>logo</div>
         <div id="bar-items">
             <div id="logout" class="bar-items">Logout</div>
-            <div id="user-name" class="bar-items">Name</div>
+            <div id="user-name" class="bar-items"></div>
         </div>
     </div>
     <div id="container">
@@ -99,8 +99,9 @@
             <p>{{firstName}} {{lastName}}</p>
             <p>{{genderCheck gender}}</p>
             <p>{{bio}}</p>
-            <iframe width="560" height="315" src="{{videoUrl}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
+            {{#equal videoUrl}}
+            <iframe src="{{formatUrl videoUrl}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {{/equal}}
             <button class="select-trainer">Select</button>
         </div>
         {{/each}}
