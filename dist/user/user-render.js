@@ -9,6 +9,9 @@ class Renderer {
         const nutritionSource = $('#nutrition-template').html();
         this.nutritionTemplate = Handlebars.compile(nutritionSource); 
         
+        const tableSource = $('#table-template').html();
+        this.tableTemplate = Handlebars.compile(tableSource); 
+
         const trainerSource = $('#trainer-template').html();
         this.trainerTemplate = Handlebars.compile(trainerSource); 
 
@@ -42,6 +45,9 @@ class Renderer {
     renderRecipes = recipesArr => this._handleBarAppender($('#recipes-trainers'), this.recipesTemplate, {recipe: recipesArr})
     renderNutrition = (nutritionContainer,nutrition) => this._handleBarAppender(nutritionContainer,this.nutritionTemplate,nutrition)
     
-    renderTrainers = (trainers) => this._handleBarAppender($('#recipes-trainers'),this.trainerTemplate,trainers)
+    renderTrainers = trainers => this._handleBarAppender($('#recipes-trainers'),this.trainerTemplate,trainers)
+
+
+    renderTable = weeklyPlan => this._handleBarAppender($('#recipes-trainers'),this.tableTemplate,weeklyPlan)
 
 }

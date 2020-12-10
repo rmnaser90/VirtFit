@@ -12,7 +12,6 @@ const Trainer = require('../models/Trainer')
 router.post('/user', async function (req, res) {
     const userReq = req.body
     const user = new User(userReq)
-    console.log(user)
     const age = new Date().getFullYear() - user.birthdate.getFullYear()
     const result = await healthApi.getUserStatus(user.weight, user.height, user.gender, age)
     const status = new Status(result)
@@ -52,7 +51,6 @@ router.put('/user/:userId/:weight', async function (req, res) {
     const result = await healthApi.getUserStatus(weight, user.height, user.gender, age)
     const status = new Status(result)
     status.trainingCalories = 400
-    console.log(status);
     user.status.push(status)
     await user.save()
     res.send(user)
@@ -86,8 +84,6 @@ router.put('/userTrainer/:userID/:trainerID', async function (req, res) {
     const { userID, trainerID } = req.params
     const user = await User.findById(userID)
     const trainer = await Trainer.findById(trainerID)
-    console.log(user)
-    console.log(trainer)
     if(user.trainer){
         const prevTrainer = await Trainer.findById(user.trainer)
         const index = prevTrainer.trainees.findIndex(trainee => trainee == user["_id"])

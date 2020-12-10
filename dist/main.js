@@ -5,8 +5,6 @@ init()
 
 if (isLoggedIn()) {
 
-  
-
     renderByType($('#type-of-user').val())
 
     $('#type-of-user').change(function () {
@@ -15,8 +13,6 @@ if (isLoggedIn()) {
         renderByType(type)
     })
 
-
-    //User stufff
     $('#sign-in-sign-up').on('click', '#go-to-sign-up', function () {
         renderer.renderSignUp()
     })
@@ -54,8 +50,6 @@ if (isLoggedIn()) {
         removeLoadGif()
     })
 
-    //trainer stuff
-
     $('#sign-in-sign-up').on('click', '#go-to-trainer-sign-up', function () {
         renderer.renderTrainerSignUp()
     })
@@ -67,7 +61,6 @@ if (isLoggedIn()) {
         email = $('#email').val()
         password = $('#password').val()
         const trainer = await virtFitApp.signInTrainer(email, password)
-        console.log(trainer)
         if (trainer.error)
             $('#err').empty().text(trainer.error)
         else {

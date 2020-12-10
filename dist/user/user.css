@@ -67,8 +67,6 @@ button{
     width: 30vmin;
 }
 
-
-
 #recipes-trainers{
     margin-top: 10px;
     display: grid;
@@ -141,8 +139,6 @@ button{
     max-width: 40vw;
 }
 
-
-
 #options{
     margin-top: 1vh;
 }
@@ -188,4 +184,15 @@ button{
     transition: 0.4s;
     align-items: center;
     justify-items: center;
+}
+table, th, td {
+    border: 1px solid black;
+}
+
+#weeklyPlan {
+    width: 100vw;
+}
+
+#weeklyPlanTable {
+    width: 100vw;
 }
