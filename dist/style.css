@@ -1,24 +1,19 @@
-/* <div id="sign-container">
-        <div id="logo-healthquotes">
-
-        </div>
-
-        <div id="sign-in-sign-up">
-            <div id="sign-inputs-buttons-container">
-                <input id="email" placeholder="example@gmale.com">
-                <input id="password" type="password" placeholder="Password">
-                <div id="sign-buttons-container">
-                    <button id="sign-up">Register</button>
-                    <button id="sign-in">Login</button>
-                </div>
-            </div>
-        </div>*/
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+opacity: 1;
+    }
+}
 
 body {
     margin: 0;
 }
 
 #sign-container {
+    animation-name: fade;
+    animation-duration: 3s;
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100vw;
@@ -27,8 +22,15 @@ body {
 }
 
 #logo-healthquotes {
+    display: grid;
+    align-items: center;
+    justify-items: center;
     background-color: cadetblue;
     height: 100%;
+}
+#logo{
+    animation-name: fade;
+    animation-duration: 3s;
 }
 
 #sign-in-sign-up {
