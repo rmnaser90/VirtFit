@@ -39,12 +39,14 @@ $('#resultMealsContainer').on('click', '.addRecipe', function () {
     const recipeId = $(this).closest('.recipe').data('id')
     const day = $(this).closest('.recipe').find('.daySelect').val()
     const meal = $(this).closest('.recipe').find('.mealSelect').val()
+    $('#addWeekPlan').css('background-color', 'crimson')
     trainerLogic.addMeal(recipeId, day, meal)
     renderer.renderTable(trainerLogic.weekPlan)
 })
 
 $('#userInfo').on('click', '#addWeekPlan', async function () {
     loadGif()
+    $('#addWeekPlan').css('background-color', 'cadetblue')
     const userID = trainerLogic.currentTrainee
     const response = await trainerLogic.addPlan(userID)
     renderer.renderTable(trainerLogic.weekPlan)
