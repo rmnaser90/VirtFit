@@ -119,12 +119,9 @@ router.post('/weekPlan/:userID', async function (req, res) {
 })
 
 
-//Todo: create nutrition routes - farees
-
-
-router.get('/recipes/:recipeTime', async function (req, res) {
-    const { recipeTime } = req.params
-    const recipesArr = await healthApi.getRecipe(recipeTime)
+router.get('/recipes',async function (req, res) { 
+    const  params  = req.body
+    const recipesArr = await healthApi.getRecipe(params)
     res.send(recipesArr)
 })
 
@@ -135,8 +132,5 @@ router.get('/nutrition/:recipeId', async function (req, res) {
 })
 
 
-
-
-// end of fares job
 
 module.exports = router

@@ -31,8 +31,8 @@ class VirtFitAPP{
         return this.user
     } 
 
-    async getRecipes(recipeTime){
-        const recipesArr = await apiManager.getRecipes(recipeTime)
+    async getRecipes(params){
+        const recipesArr = await apiManager.getRecipes(params)
         this.recipes = recipesArr
         return this.recipes
     }

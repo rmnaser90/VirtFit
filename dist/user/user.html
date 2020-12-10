@@ -64,9 +64,43 @@
     </script>
 
     <script id="meal-options-template" type="text/x-handlebars-template">
-        <button id="breakfast" class="option">Breakfast</button>
-        <button id="dinner" class="option">Dinner</button>
-        <button id="lunch" class="option">Lunch</button>
+            <select name="cuisine" id="cuisine">
+                <option value="" disabled selected>Choose Cuisine</option>
+                <option value="chinese">Chinese</option>
+                <option value="british">British</option>
+                <option value="french">French</option>
+                <option value="mexican">Mexican</option>
+                <option value="middle-eastern">Middle Eastern</option>
+                <option value="spanish">Spanish</option>
+              </select>
+        <div>
+            <select name="diet" id="diet">
+                <option disabled selected>Choose Diet</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+              </select>
+        </div>
+        <div>
+            <select name="intolerances" id="intolerances">
+                <option disabled selected>Choose Intolerances</option>
+                <option value="egg">Egg</option>
+                <option value="gluten">Gluten</option>
+                <option value="peanut">Peanut</option>
+                <option value="sesame">Sesame</option>
+                <option value="seafood">Seafood</option>
+            </select>
+        </div>
+        <div>
+            <select name="type" id="type">
+                <option disabled selected>Choose Type</option>
+                <option value="main-course">Main course</option>
+                <option value="side-dish">Side dish</option>
+                <option value="dessert">Dessert</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="salad">Salad</option>
+            </select>
+        </div>
+        <button id="lunch" class="option">Submit</button> 
     </script>
 
     <script id="recipes-template" type="text/x-handlebars-template">
@@ -105,12 +139,7 @@
         </div>
         {{/each}}
     </script>
-    <!-- "_id": "5fd12937b8753cfaf39e3bab",
-        "firstName": "fadi",
-        "lastName": "fadi",
-        "gender": "m",
-        "bio": "hi",
-        "videoUrl": "222" -->
+
 
     <script src="../jquery/dist/jquery.js"></script>
     <script src="../handlebars/dist/handlebars.js"></script>
