@@ -57,7 +57,14 @@ class ApiManager {
 
 
     async addWorkPlan(userID, workPlan) {
-        const response = await $.post(`/weekPlan/${userID}`, workPlan)
+        console.log("frommm api managerrr ",workPlan,userID)
+        const response = await $.ajax({
+            type: 'POST',
+            url: `/weekPlan/${userID}`,
+            contentType: 'application/json',
+            data: JSON.stringify(workPlan)
+        });
+        
         return response
     }
 }

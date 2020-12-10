@@ -3,7 +3,6 @@ const renderer = new Renderer
 
 init()
 
-
 if (isLoggedIn()) {
 
   

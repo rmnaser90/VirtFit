@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="trainer.css">
+    <link rel="stylesheet" href="../elements.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@800&display=swap"
         rel="stylesheet">
@@ -27,23 +28,51 @@
         </div>
         <div id="userInfo">
             <div id="user-status-container"></div>
-            <div id="weeklyPlan">  </div>
+            <div id="weeklyPlan"> </div>
             <div id="searchMealsContainer">
-                
-                   
-                    <div id="searchForMeal">
-                        <h1 class="searchTitle">Look for Meals</h1>
-                        <div class="mealButtons" id="breakfast">Breakfast</div>
-                        <div class="mealButtons" id="lunch">Lunch</div>
-                        <div class="mealButtons" id="dinner">Dinner</div>
-                    </div>
-              
+
+
+                <div id="searchForMeal">
+                    <h1 class="searchTitle">Look for Meals</h1>
+                    <select class="options" name="cuisine" id="cuisine">
+                        <option value="" disabled selected>Choose Cuisine</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="british">British</option>
+                        <option value="french">French</option>
+                        <option value="mexican">Mexican</option>
+                        <option value="middle-eastern">Middle Eastern</option>
+                        <option value="spanish">Spanish</option>
+                    </select>
+                    <select class="options" name="diet" id="diet">
+                        <option disabled selected>Choose Diet</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                    </select>
+                    <select class="options" name="intolerances" id="intolerances">
+                        <option disabled selected>Choose Intolerances</option>
+                        <option value="egg">Egg</option>
+                        <option value="gluten">Gluten</option>
+                        <option value="peanut">Peanut</option>
+                        <option value="sesame">Sesame</option>
+                        <option value="seafood">Seafood</option>
+                    </select>
+                    <select class="options" name="type" id="type">
+                        <option disabled selected>Choose Type</option>
+                        <option value="main-course">Main course</option>
+                        <option value="side-dish">Side dish</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="salad">Salad</option>
+                    </select>
+                    <button id="lunch" class="options">Submit</button>
+                </div>
+
                 <div id="resultMealsContainer">
-                    
+
                 </div>
             </div>
         </div>
-       
+
 
     </div>
 
@@ -51,7 +80,7 @@
 
     <script id="trainee-template" type="text/x-handlebars-template">
          {{#each trainees}}
-              <div class="traineeBox" id="{{_id}}">
+              <div class="traineeBox" data-id="{{_id}}">
                    <p class="traineeName">{{firstName}} {{lastName}}</p>
 
               </div>
@@ -73,7 +102,7 @@
     </script>
 
 
-    
+
     <script id="recipes-template" type="text/x-handlebars-template">
         {{#each recipies}}
         <div data-id="{{id}}" class="recipe">
@@ -109,7 +138,18 @@
         </div>
         {{/each}} 
     </script>
-
+    <script id="nutrition-template" type="text/x-handlebars-template">
+        <div data-id="{{id}}" class="nutrition">
+            <p>{{name}}</p>
+            <p>healthScore: {{healthScore}}</p>
+            <p>likes: {{likes}}</p>
+            <ul>
+            {{#each nutrition}}
+                <li>{{title}}: {{amount}}</li>
+            {{/each}}
+            </ul>
+        </div>
+    </script>
 
 
 
@@ -165,6 +205,9 @@
 
 
 
+    <script id="meal-options-template" type="text/x-handlebars-template">
+
+</script>
 
 
 

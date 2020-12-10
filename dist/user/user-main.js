@@ -21,15 +21,15 @@ $('#search-meal').on('click', function () {
     if (ifPopulated) {
         $('#options').empty()
     }
-    else{
+    else {
         renderer.renderMealOptions()
     }
 })
 
-$('#options').on('click','#lunch',async function(){
+$('#options').on('click', '#lunch', async function () {
     loadGif()
     const params = extractRecipesOptions()
-    console.log(params )
+    console.log(params)
     const recipesArr = await virtFitApp.getRecipes(params)
     renderer.renderRecipes(recipesArr)
     removeLoadGif()
@@ -40,15 +40,14 @@ function extractRecipesOptions() {
     return {
         cuisine: $('#cuisine').val(),
         diet: $('#diet').val(),
-        intolerances: $('#intolerances').val(), 
-        // number: $('#number').val(),
-        // offset: $('#offset').val(),
+        intolerances: $('#intolerances').val(),
+        number: 10,
         type: $('#type').val()
     }
 }
 
 
-$('#recipes-trainers').on('click', '.recipes-container', async function(){
+$('#recipes-trainers').on('click', '.recipes-container', async function () {
     loadGif()
     const recipeContainer = $(this).closest('.recipe')
     const nutritionContainer = recipeContainer.find('.nutrition-container')

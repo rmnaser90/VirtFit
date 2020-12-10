@@ -34,7 +34,38 @@
     <button id="search-meal">Search meals</button>
     <button id="find-trainer">Find A Trainer</button>
     <div id="options">
-
+        <h1 class="searchTitle">Look for Meals</h1>
+        <select class="options" name="cuisine" id="cuisine">
+            <option value="" disabled selected>Choose Cuisine</option>
+            <option value="chinese">Chinese</option>
+            <option value="british">British</option>
+            <option value="french">French</option>
+            <option value="mexican">Mexican</option>
+            <option value="middle-eastern">Middle Eastern</option>
+            <option value="spanish">Spanish</option>
+        </select>
+        <select class="options" name="diet" id="diet">
+            <option disabled selected>Choose Diet</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+        </select>
+        <select class="options" name="intolerances" id="intolerances">
+            <option disabled selected>Choose Intolerances</option>
+            <option value="egg">Egg</option>
+            <option value="gluten">Gluten</option>
+            <option value="peanut">Peanut</option>
+            <option value="sesame">Sesame</option>
+            <option value="seafood">Seafood</option>
+        </select>
+        <select class="options" name="type" id="type">
+            <option disabled selected>Choose Type</option>
+            <option value="main-course">Main course</option>
+            <option value="side-dish">Side dish</option>
+            <option value="dessert">Dessert</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="salad">Salad</option>
+        </select>
+        <button id="lunch" class="options">Submit</button>
     </div>
 
     <div id="recipes-trainers">
@@ -63,46 +94,6 @@
         </div>
     </script>
 
-    <script id="meal-options-template" type="text/x-handlebars-template">
-            <select name="cuisine" id="cuisine">
-                <option value="" disabled selected>Choose Cuisine</option>
-                <option value="chinese">Chinese</option>
-                <option value="british">British</option>
-                <option value="french">French</option>
-                <option value="mexican">Mexican</option>
-                <option value="middle-eastern">Middle Eastern</option>
-                <option value="spanish">Spanish</option>
-              </select>
-        <div>
-            <select name="diet" id="diet">
-                <option disabled selected>Choose Diet</option>
-                <option value="vegetarian">Vegetarian</option>
-                <option value="vegan">Vegan</option>
-              </select>
-        </div>
-        <div>
-            <select name="intolerances" id="intolerances">
-                <option disabled selected>Choose Intolerances</option>
-                <option value="egg">Egg</option>
-                <option value="gluten">Gluten</option>
-                <option value="peanut">Peanut</option>
-                <option value="sesame">Sesame</option>
-                <option value="seafood">Seafood</option>
-            </select>
-        </div>
-        <div>
-            <select name="type" id="type">
-                <option disabled selected>Choose Type</option>
-                <option value="main-course">Main course</option>
-                <option value="side-dish">Side dish</option>
-                <option value="dessert">Dessert</option>
-                <option value="breakfast">Breakfast</option>
-                <option value="salad">Salad</option>
-            </select>
-        </div>
-        <button id="lunch" class="option">Submit</button> 
-    </script>
-
     <script id="recipes-template" type="text/x-handlebars-template">
         {{#each recipe}}
         <div data-id="{{id}}" class="recipe">
@@ -124,6 +115,11 @@
             <p>{{name}}</p>
             <p>healthScore: {{healthScore}}</p>
             <p>likes: {{likes}}</p>
+            <ul>
+            {{#each nutrition}}
+                <li>{{title}}: {{amount}}</li>
+            {{/each}}
+            </ul>
         </div>
     </script>
 
