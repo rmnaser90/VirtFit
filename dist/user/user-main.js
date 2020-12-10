@@ -93,6 +93,20 @@ $('#find-trainer').on('click', async function () {
     removeLoadGif()
 })
 
+$('#plan').on('click',function(){
+    loadGif()
+    const ifPopulated = $('#recipes-trainers').find('#weeklyPlanTable').length
+    
+    if (ifPopulated) {
+        $('#recipes-trainers').empty()
+    }
+    else {        
+        renderer.renderTable(user.weeklyPlan)
+    }
+    console.log(user)
+    removeLoadGif()
+})
+
 $('#recipes-trainers').on('click', '.select-trainer', function () {
     const userId = user["_id"]
     const trainerId = $(this).closest('.trainer').data('id')

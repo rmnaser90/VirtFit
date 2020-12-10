@@ -194,3 +194,14 @@ button{
     align-items: center;
     justify-items: center;
 }
+table, th, td {
+    border: 1px solid black;
+}
+
+#weeklyPlan {
+    width: 100vw;
+}
+
+#weeklyPlanTable {
+    width: 100vw;
+}
