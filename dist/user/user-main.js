@@ -29,7 +29,7 @@ $('#search-meal').on('click', function () {
 $('#options').on('click', '#lunch', async function () {
     loadGif()
     const params = extractRecipesOptions()
-    console.log(params)
+    
     const recipesArr = await virtFitApp.getRecipes(params)
     renderer.renderRecipes(recipesArr)
     removeLoadGif()
@@ -69,7 +69,7 @@ $('#update').on('click', async function () {
     const newWeight = $(this).closest('#weight-elements-container').find('#weight').val()
     if (newWeight !== "") {
         $(this).closest('#weight-elements-container').find('#weight').val("")
-        console.log(newWeight)
+        
         const user = await virtFitApp.updateUserStatus(localStorage.id, newWeight)
         let updatedUser = formatStatusForRender(user)
         updatedUser.status.isUpdated = true
@@ -81,13 +81,13 @@ $('#update').on('click', async function () {
 $('#find-trainer').on('click', async function () {
     loadGif()
     const ifPopulated = $('#recipes-trainers').find('.trainer').length
-    console.log(ifPopulated)
+    
     if (ifPopulated) {
         $('#recipes-trainers').empty()
     }
     else {
         const trainersArr = await virtFitApp.getTrainers()
-        console.log(trainersArr)
+        
         renderer.renderTrainers({ trainers: trainersArr })
     }
     removeLoadGif()
@@ -96,7 +96,7 @@ $('#find-trainer').on('click', async function () {
 $('#recipes-trainers').on('click', '.select-trainer', function () {
     const userId = user["_id"]
     const trainerId = $(this).closest('.trainer').data('id')
-    console.log($(this).closest('.trainer').data('id'), user["_id"])
+    
     virtFitApp.assignTrainer(userId, trainerId)
 })
 
@@ -114,7 +114,6 @@ async function init() {
     loadGif()
     id = localStorage.id
     user = await virtFitApp.getUserFromDB(id)
-    console.log(user)
     $('#user-name').text(`${user.firstName} ${user.lastName}`)
     if (user.trainer)
         $('#find-trainer').text('Change trainer')
