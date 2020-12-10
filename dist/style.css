@@ -1,18 +1,3 @@
-/* <div id="sign-container">
-        <div id="logo-healthquotes">
-
-        </div>
-
-        <div id="sign-in-sign-up">
-            <div id="sign-inputs-buttons-container">
-                <input id="email" placeholder="example@gmale.com">
-                <input id="password" type="password" placeholder="Password">
-                <div id="sign-buttons-container">
-                    <button id="sign-up">Register</button>
-                    <button id="sign-in">Login</button>
-                </div>
-            </div>
-        </div>*/
 
 body {
     margin: 0;
