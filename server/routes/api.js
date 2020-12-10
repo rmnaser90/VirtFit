@@ -87,6 +87,13 @@ router.put('/userTrainer/:userID/:trainerID', async function (req, res) {
     const trainer = await Trainer.findById(trainerID)
     console.log(user)
     console.log(trainer)
+    if(user.trainer){
+        const prevTrainer = await Trainer.findById(user.trainer)
+        const index = prevTrainer.trainees.findIndex(trainee => trainee == user["_id"])
+
+        prevTrainer.trainees.splice(index,1)
+        await prevTrainer.save()
+    }
     user.trainer = trainer
     trainer.trainees.push(user)
     await user.save()

@@ -36,7 +36,7 @@ class ApiManager{
         return trainer
     }
     async assignTrainer(userID,trainerID){
-        const response = await $.put(`/userTrainer/${userID}/${trainerID}`)
+        const response = await $.ajax({url: `/userTrainer/${userID}/${trainerID}`,type: 'PUT'})
         return response
     }
 
