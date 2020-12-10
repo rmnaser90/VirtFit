@@ -23,7 +23,7 @@ class ApiManager {
     }
     
     async getRecipes(params){
-        const recipesArr = await $.get(`/recipes`, params) // /${recipeTime}
+        const recipesArr = await $.get(`/recipes`, params) 
         return (recipesArr)
     }
 
@@ -52,12 +52,9 @@ class ApiManager {
         return savedTrainer
     }
 
-
     getTrainers = async () => await $.get('/trainers')
 
-
     async addWorkPlan(userID, workPlan) {
-        console.log("frommm api managerrr ",workPlan,userID)
         const response = await $.ajax({
             type: 'POST',
             url: `/weekPlan/${userID}`,

@@ -31,7 +31,6 @@ class TrainerLogic {
     }
 
     async addPlan(userID) {
-        console.log(this.weekPlan, userID)
         const response = await apiManager.addWorkPlan(userID, this.weekPlan)
         return response
     }

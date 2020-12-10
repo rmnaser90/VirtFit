@@ -12,7 +12,6 @@ const Trainer = require('../models/Trainer')
 router.post('/user', async function (req, res) {
     const userReq = req.body
     const user = new User(userReq)
-    console.log(user)
     const age = new Date().getFullYear() - user.birthdate.getFullYear()
     const result = await healthApi.getUserStatus(user.weight, user.height, user.gender, age)
     const status = new Status(result)
@@ -52,7 +51,6 @@ router.put('/user/:userId/:weight', async function (req, res) {
     const result = await healthApi.getUserStatus(weight, user.height, user.gender, age)
     const status = new Status(result)
     status.trainingCalories = 400
-    console.log(status);
     user.status.push(status)
     await user.save()
     res.send(user)
@@ -86,8 +84,6 @@ router.put('/userTrainer/:userID/:trainerID', async function (req, res) {
     const { userID, trainerID } = req.params
     const user = await User.findById(userID)
     const trainer = await Trainer.findById(trainerID)
-    console.log(user)
-    console.log(trainer)
     if(user.trainer){
         const prevTrainer = await Trainer.findById(user.trainer)
         const index = prevTrainer.trainees.findIndex(trainee => trainee == user["_id"])
@@ -111,7 +107,6 @@ router.get('/trainer/:trainerID', async function (req, res) {
 
 router.get('/trainers', async function (req, res) {
     const trainers = await Trainer.find({})
-    console.log(trainers)
     const trainersMapped = trainers.map(trainer => { return {_id: trainer["_id"],firstName: trainer["firstName"] ,
     lastName: trainer["lastName"],gender: trainer["gender"],bio: trainer["bio"],videoUrl: trainer["videoUrl"]}})
 
@@ -121,10 +116,7 @@ router.get('/trainers', async function (req, res) {
 router.post('/weekPlan/:userID', async function (req, res) {
     const { userID } = req.params
     const weeklyPlan = req.body
-    console.log(weeklyPlan,userID)
     const user = await User.findById(userID)
-    console.log("hiii")
-    console.log(user)
     user.weeklyPlan = weeklyPlan
     user.save()
     res.send(user)
