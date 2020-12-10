@@ -37,7 +37,7 @@
 
     </div>
 
-    <div id="recipes">
+    <div id="recipes-trainers">
 
     </div>
 
@@ -86,19 +86,31 @@
     </script>
 
     <script id="nutrition-template" type="text/x-handlebars-template">
-        
         <div data-id="{{id}}" class="nutrition">
             <p>{{name}}</p>
             <p>healthScore: {{healthScore}}</p>
             <p>likes: {{likes}}</p>
-            <!-- <ul>
-                {{#each nutrition}}
-                    <li>{{title}}: {{amount}} {{unit}}, {{percentOfDailyNeeds}}</li>
-                {{/each}}
-            </ul> -->
         </div>
-        
     </script>
+
+    <script id="trainer-template" type="text/x-handlebars-template">
+        {{#each trainers}}
+        <div data-id="{{_id}}" class="trainer">
+            <p>{{firstName}} {{lastName}}</p>
+            <p>{{genderCheck gender}}</p>
+            <p>{{bio}}</p>
+            <iframe width="560" height="315" src="{{videoUrl}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+            <button class="select-trainer">Select</button>
+        </div>
+        {{/each}}
+    </script>
+    <!-- "_id": "5fd12937b8753cfaf39e3bab",
+        "firstName": "fadi",
+        "lastName": "fadi",
+        "gender": "m",
+        "bio": "hi",
+        "videoUrl": "222" -->
 
     <script src="../jquery/dist/jquery.js"></script>
     <script src="../handlebars/dist/handlebars.js"></script>

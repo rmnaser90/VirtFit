@@ -27,10 +27,9 @@ class TrainerLogic{
        return user
     }
 
-    makePlane(userId){
-        const user = this.trainer.trainees.find(u => u._id === userId)
-        this.weekPlan = user.weeklyPlan  
-        return  this.weekPlan
+    async addPlan(userID){
+        const response = await apiManager.addWorkPlan(userID,this.weekPlan)
+        return response
     }
     
     async getRecipes(recipeTime){
