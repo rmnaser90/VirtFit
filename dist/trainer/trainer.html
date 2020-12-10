@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,9 @@
         rel="stylesheet">
     <title>User</title>
 </head>
+
 <body>
-    
+
     <div id="navigation-bar">
         <div>logo</div>
         <div id="bar-items">
@@ -18,88 +20,62 @@
             <div id="user-name" class="bar-items">Name</div>
         </div>
     </div>
-    
-    
+
     <div id="container">
-        <div id="trainers-container">
-
-            <div id="leftSide-container">
-                <div id="search">
-                    <button id="search-meal">Search meals</button> 
-                    <div id="options">
+        <h1 class="title">My Clients</h1>
+        <div id="trainees-container">
+        </div>
+        <div id="userInfo">
+            <div id="user-status-container"></div>
+            <div id="weeklyPlan">  </div>
+            <div id="searchMealsContainer">
+                
+                   
+                    <div id="searchForMeal">
+                        <h1 class="searchTitle">Look for Meals</h1>
+                        <div class="mealButtons" id="breakfast">Breakfast</div>
+                        <div class="mealButtons" id="lunch">Lunch</div>
+                        <div class="mealButtons" id="dinner">Dinner</div>
                     </div>
+              
+                <div id="resultMealsContainer">
+                    
                 </div>
-            
-                <div id="recipes">
-                </div>
-            </div>  
-
-            <div id="rightSide-container">
-
             </div>
         </div>
-        
-        <!-- <div id="update-status">
-            <div id="weight-elements-container">
-                <div><input type="number" id="weight" placeholder="Weight(KG)"></div>
-                <button id="update">Update weight</button>
-            </div>
-            <button id="plan">Make plan</button>
-        </div> -->
-        
+       
+
     </div>
 
 
-    <script id="trainer-template" type="text/x-handlebars-template">
-        {{#each user}}
-        <div id="{{id}}" class="user">
-            <h4>name: {{name}}</h4>
-            <div>Ideal weight is: {{status.idealWeight}}</h6></div>
-            <div>Current weight is: {{status.weight}}</div>
-            <div>bmrValue: {{status.bmrValue}}</div>
-            <div>Status: {{status.status}}</div>
-            <div>Risk: {{status.risk}}</div>
-            <button class="makePlane">Add a plan</button>
-        </div>
-        {{/each}}
+
+    <script id="trainee-template" type="text/x-handlebars-template">
+         {{#each trainees}}
+              <div class="traineeBox" id="{{_id}}">
+                   <p class="traineeName">{{firstName}} {{lastName}}</p>
+
+              </div>
+    {{/each}}
     </script>
 
 
-    <script id="table-template" type="text/x-handlebars-template">
-        
-        <div id="table-container">
-            <div id="tableTopBar">
 
-            </div>
-            <div class="sun">{{sun}}</div>
-            <div class="mon">{{mon}}</div>
-            <div class="tus">{{tus}}</div>
-            <div class="wen">{{wen}}</div>
-            <div class="thu">{{thu}}</div>
-            <div class="fri">{{fri}}</div>
-            <div class="sat">{{sat}}</div>
-            <div class="breakfast">{{breakfast}}</div>
-            <div class="lunch">{{lunch}}</div>
-            <div class="dinner">{{dinner}}</div>
-            <div class="workOut">{{workOut}}</div>
-            <div>X21</div>
+    <script id="User-status-template" type="text/x-handlebars-template">
+        <div id="{{_id}}" class="userStatus">
+            <h4>name: {{firstName}} {{lastName}}</h4>
+            <div class="statusText">Ideal weight is: {{status.idealWeight}}</div>
+            <div class="statusText">Current weight is: {{status.weight}}</div>
+            <div class="statusText">bmrValue: {{status.bmrValue}}</div>
+            <div class="statusText">Status: {{status.status}}</div>
+            <div class="statusText">Risk: {{status.risk}}</div>
+            <div id="addWeekPlan" >Save Weekly Plan</div>
         </div>
-            
-        <div id="sideBar">
-        </div>
-
     </script>
 
 
-    <script id="meal-options-template" type="text/x-handlebars-template">
-        <button id="breakfast" class="option">Breakfast</button>
-        <button id="dinner" class="option">Dinner</button>
-        <button id="lunch" class="option">Lunch</button>
-    </script>
-
-
+    
     <script id="recipes-template" type="text/x-handlebars-template">
-        {{#each recipe}}
+        {{#each recipies}}
         <div data-id="{{id}}" class="recipe">
             <div class="nutrition-container">
 
@@ -109,20 +85,96 @@
                 <img src="https://spoonacular.com/recipeImages/{{image}}" alt="{{sourceUrl}}">
                 <p>prepare time: {{readyInMinutes}}</p>
                 <p>servings: {{servings}}</p>
-                <button id="AddRecipe">Add recipe</button>
-                <button id="see-nutrition">See nutrition</button>
+                <div class="makePlanContainer">
+                    <select name="Day" class="daySelect">
+                        <option value="sunday">Sunday</option>
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                    </select>
+                    <select name="Meal" class="mealSelect">
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+    
+                    </select>
+                <button class="addRecipe">Add recipe</button>
+                <button class="see-nutrition">See nutrition</button>
+            </div>
+                
             </div>
         </div>
         {{/each}} 
     </script>
 
 
+
+
+    <script id="table-template" type="text/x-handlebars-template">
+
+    <table id="weeklyPlanTable">
+        <tr>
+            
+            <th class="mealName">Meal</th>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Tuesday</th>
+        </tr>
+        <tr>
+            <td class="mealName">Breakfast</td>
+            <td id="{{sunday.breakfast.id}}"><a href="{{sourceUrl}}">{{sunday.breakfast.title}}</a></td>
+            <td id="{{monday.breakfast.id}}"><a href="{{sourceUrl}}">{{monday.breakfast.title}}</a></td>
+            <td id="{{tuesday.breakfast.id}}"><a href="{{sourceUrl}}">{{tuesday.breakfast.title}}</a></td>
+            <td id="{{wednesday.breakfast.id}}"><a href="{{sourceUrl}}">{{wednesday.breakfast.title}}</a></td>
+            <td id="{{thursday.breakfast.id}}"><a href="{{sourceUrl}}">{{thursday.breakfast.title}}</a></td>
+            <td id="{{friday.breakfast.id}}"><a href="{{sourceUrl}}">{{friday.breakfast.title}}</a></td>
+            <td id="{{saturday.breakfast.id}}"><a href="{{sourceUrl}}">{{saturday.breakfast.title}}</a></td>
+            
+        </tr>
+        <tr>
+            <td class="mealName">Lunch</td>
+            <td id="{{sunday.lunch.id}}"><a href="{{sourceUrl}}">{{sunday.lunch.title}}</a></td>
+            <td id="{{monday.lunch.id}}"><a href="{{sourceUrl}}">{{monday.lunch.title}}</a></td>
+            <td id="{{tuesday.lunch.id}}"><a href="{{sourceUrl}}">{{tuesday.lunch.title}}</a></td>
+            <td id="{{wednesday.lunch.id}}"><a href="{{sourceUrl}}">{{wednesday.lunch.title}}</a></td>
+            <td id="{{thursday.lunch.id}}"><a href="{{sourceUrl}}">{{thursday.lunch.title}}</a></td>
+            <td id="{{friday.lunch.id}}"><a href="{{sourceUrl}}">{{friday.lunch.title}}</a></td>
+            
+        </tr>
+        <tr>
+            <td class="mealName">Dinner</td>
+            <td id="{{sunday.dinner.id}}"><a href="{{sourceUrl}}">{{sunday.dinner.title}}</a></td>
+            <td id="{{monday.dinner.id}}"><a href="{{sourceUrl}}">{{monday.dinner.title}}</a></td>
+            <td id="{{tuesday.dinner.id}}"><a href="{{sourceUrl}}">{{tuesday.dinner.title}}</a></td>
+            <td id="{{wednesday.dinner.id}}"><a href="{{sourceUrl}}">{{wednesday.dinner.title}}</a></td>
+            <td id="{{thursday.dinner.id}}"><a href="{{sourceUrl}}">{{thursday.dinner.title}}</a></td>
+            <td id="{{friday.dinner.id}}"><a href="{{sourceUrl}}">{{friday.dinner.title}}</a></td>
+            
+        </tr>
+        
+    </table>
+    </script>
+
+
+
+
+
+
+
     <script src="../jquery/dist/jquery.js"></script>
     <script src="../handlebars/dist/handlebars.js"></script>
     <script src="../moment/moment.js"></script>
     <script src="../apiManager.js"></script>
-    <script src="../logic.js"></script>
+    <script src="trainer-logic.js"></script>
     <script src="trainer-render.js"></script>
     <script src="trainer-main.js"></script>
 </body>
+
 </html>

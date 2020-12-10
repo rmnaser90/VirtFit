@@ -1,26 +1,56 @@
-// const trainerRenderer = new TrainerRenderer
+const renderer = new Renderer
 const trainerLogic = new TrainerLogic()
 
 let id
-let user
 
 const formatStatusForRender = (user) => { return {firstName: user.firstName, status: user.status[user.status.length-1]} }
 
 init()
+
+async function init(){
+    id = localStorage.id
+    const trainer = await trainerLogic.getTrainerUsers(id)
+    renderer.renderTainees(trainer)
+}
 
 $('#logout').on('click',function(){
     localStorage.removeItem("id")
     location.assign(`../index.html`)
 })
 
-///////////////////////////
-async function init(){
-    id = localStorage.id
-    trainer = await trainerLogic.getTrainerUsers(id)
+$('#trainees-container').on('click','.traineeBox',function () {
+   const userID = $(this).attr('id')
+   const user = trainerLogic.getUserByID(userID)
+   renderer.renderUserStatus(user)
+   console.log(trainerLogic.weekPlan);
+   renderer.renderTable(trainerLogic.weekPlan)
+})
+
+$('.mealButtons').on('click', async function () {
+    const meal = $(this).attr('id')
+    const recipies = await trainerLogic.getRecipes(meal)
+    renderer.renderRecipies(recipies)
+})
+
+$('#resultMealsContainer').on('click','.addRecipe',function () {
+    const recipeId = $(this).closest('.recipe').data('id')
+    const day = $(this).closest('.recipe').find('.daySelect').val()
+    const meal = $(this).closest('.recipe').find('.mealSelect').val()
+    trainerLogic.addMeal(recipeId,day,meal)
+    console.log(trainerLogic.weekPlan);
     
-    // trainerRenderer.renderTrainer(trainer)
-}
-/////////////////////
+})
+
+$('#userInfo').on('click','#addWeekPlan', async function () {
+    const userID = $(this).closest('.userStatus').attr('id')
+    const response = await trainerLogic.addPlan(userID)
+    renderer.renderTable(trainerLogic.weekPlan)
+})
+
+
+
+
+
 
 
 $('#rightSide-container').on('click', '.makePlane',async function(){
@@ -32,7 +62,7 @@ $('#rightSide-container').on('click', '.makePlane',async function(){
 $('#search-meal').on('click',function(){
     // trainerRenderer.renderMealOptions()
 })
-$('#options').on('click','.option',function(){
+$('#options').on('click','.option',async function(){
     $('#options').empty()
     const recipeTime = $(this).attr('id')
     const recipesArr = await trainerLogic.getRecipes(recipeTime)

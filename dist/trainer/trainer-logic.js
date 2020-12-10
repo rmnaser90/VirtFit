@@ -1,4 +1,4 @@
-// const apiManager = new ApiManager
+const apiManager = new ApiManager
 class TrainerLogic{
  
     constructor(){
@@ -10,26 +10,31 @@ class TrainerLogic{
     
     async getTrainerUsers(trainerId){
         const trainer = await apiManager.getTrainerUser(trainerId)
-        const trainees = trainer.trainees 
-        return trainees
-    }
-
-    async getTrainerFromDB(trainerId){
-        const trainer = await apiManager.getTrainerUser(trainerId)
         this.trainer = trainer
+        // this.trainer.trainees.forEach(t => {
+        //     t.weeklyPlan = JSON.(t.weeklyPlan)
+        //     console.log(t.weeklyPlan)
+        // })
         return this.trainer
     }
 
+
     addMeal(recipeId, day, meal){
         const recipe = this.recipes.find(r => r.id === recipeId)
+        this.weekPlan[day]= this.weekPlan[day] || {}
         this.weekPlan[day][meal] = recipe
         return this.weekPlan
     }
 
-    makePlane(userId){
-        const user = this.trainer.trainees.find(u => u._id === userId)
-        this.weekPlan = user.weeklyPlan  
-        return  this.weekPlan
+    getUserByID(userID){
+       const user = this.trainer.trainees.find(t => t._id === userID)
+       this.weekPlan = user.weeklyPlan
+       return user
+    }
+
+    async addPlan(userID){
+        const response = await apiManager.addWorkPlan(userID,this.weekPlan)
+        return response
     }
     
     async getRecipes(recipeTime){
